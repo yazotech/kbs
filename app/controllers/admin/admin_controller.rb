@@ -3,4 +3,3 @@ module Admin
 		layout 'admin'
 	end
 end
-end

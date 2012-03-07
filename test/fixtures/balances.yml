@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  balance_date: 2012-03-06 14:45:28
+  product_id: 1
+  channel_number: MyString
+  company_id: 1
+  price: 9.99
+  count: 1
+  amount: 9.99
+  remark: MyString
+  status: 1
+
+two:
+  balance_date: 2012-03-06 14:45:28
+  product_id: 1
+  channel_number: MyString
+  company_id: 1
+  price: 9.99
+  count: 1
+  amount: 9.99
+  remark: MyString
+  status: 1

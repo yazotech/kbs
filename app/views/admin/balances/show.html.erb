@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Balance date:</b>
+  <%= @balance.balance_date %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @balance.product_id %>
+</p>
+
+<p>
+  <b>Channel number:</b>
+  <%= @balance.channel_number %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @balance.company_id %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @balance.price %>
+</p>
+
+<p>
+  <b>Count:</b>
+  <%= @balance.count %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @balance.amount %>
+</p>
+
+<p>
+  <b>Remark:</b>
+  <%= @balance.remark %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @balance.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_balance_path(@balance) %> |
+<%= link_to 'Back', admin_balances_path %>
+
