@@ -7,7 +7,7 @@ class BalancesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @balances }
+      format.json { render :json => @balances }
     end
   end
 
@@ -18,7 +18,7 @@ class BalancesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @balance }
+      format.json { render :json => @balance }
     end
   end
 
@@ -29,7 +29,7 @@ class BalancesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @balance }
+      format.json { render :json => @balance }
     end
   end
 
@@ -45,11 +45,11 @@ class BalancesController < ApplicationController
 
     respond_to do |format|
       if @balance.save
-        format.html { redirect_to  admin_balance_path(@balance), notice: 'Balance was successfully created.' }
-        format.json { render json: @balance, status: :created, location: @balance }
+        format.html { redirect_to  admin_balance_path(@balance), :notice => 'Balance was successfully created.' }
+        format.json { render :json => @balance, :status => :created, :location => @balance }
       else
-        format.html { render action: "new" }
-        format.json { render json: @balance.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @balance.errors, :status =>:unprocessable_entity }
       end
     end
   end
@@ -61,11 +61,11 @@ class BalancesController < ApplicationController
 
     respond_to do |format|
       if @balance.update_attributes(params[:balance])
-        format.html { redirect_to admin_balance_path(@balance), notice: 'Balance was successfully updated.' }
+        format.html { redirect_to admin_balance_path(@balance), :notice => 'Balance was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @balance.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @balance.errors, :status => :unprocessable_entity }
       end
     end
   end

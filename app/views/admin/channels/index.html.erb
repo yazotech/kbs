@@ -21,7 +21,7 @@
     <td><%= channel.status %></td>
     <td><%= link_to 'Show', admin_channel_path(channel) %></td>
     <td><%= link_to 'Edit', edit_admin_channel_path(channel) %></td>
-    <td><%= link_to 'Destroy', admin_channel_path(channel), confirm: 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', admin_channel_path(channel), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

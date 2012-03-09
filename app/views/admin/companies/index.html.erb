@@ -19,7 +19,7 @@
     <td><%= company.pay_date %></td>
     <td><%= link_to 'Show', admin_company_path(company) %></td>
     <td><%= link_to 'Edit', edit_admin_company_path(company) %></td>
-    <td><%= link_to 'Destroy', admin_company_path(company), confirm: 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', admin_company_path(company), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

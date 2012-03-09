@@ -7,7 +7,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @channels }
+      format.json { render :json => @channels }
     end
   end
 
@@ -18,7 +18,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @channel }
+      format.json { render :json => @channel }
     end
   end
 
@@ -29,7 +29,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @channel }
+      format.json { render :json => @channel }
     end
   end
 
@@ -45,11 +45,11 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.save
-        format.html { redirect_to admin_channel_path(@channel), notice: 'Channel was successfully created.' }
-        format.json { render json: @channel, status: :created, location: @channel }
+        format.html { redirect_to admin_channel_path(@channel), :notice => 'Channel was successfully created.' }
+        format.json { render :json => @channel, :status => :created, :location => @channel }
       else
-        format.html { render action: "new" }
-        format.json { render json: @channel.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @channel.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -61,11 +61,11 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.update_attributes(params[:channel])
-        format.html { redirect_to admin_channel_path(@channel), notice: 'Channel was successfully updated.' }
+        format.html { redirect_to admin_channel_path(@channel), :notice => 'Channel was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @channel.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @channel.errors, :status => :unprocessable_entity }
       end
     end
   end
