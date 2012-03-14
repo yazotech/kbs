@@ -5,16 +5,18 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
 	<div id='page_header'>
-		<ul id='page_nav'>
+		<ul id='page_nav' >
 			<li><a href='/admin'>home</a></li>
 			<li><%= link_to :companies, :admin_companies %></li>
 			<li><%= link_to :channels, :admin_channels %></li>
 			<li><%= link_to :balances, :admin_balances %></li>
 			<li><%= link_to :products, :admin_products %></li>
 		</ul>
+		<br/>
 	</div>
 	<div id='page_body'>
 		<div>

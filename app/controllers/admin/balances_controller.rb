@@ -1,5 +1,5 @@
 module Admin
-class BalancesController < ApplicationController
+class BalancesController < AdminController
   # GET /balances
   # GET /balances.json
   def index

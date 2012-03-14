@@ -1,5 +1,5 @@
 module Admin
-class ChannelsController < ApplicationController
+class ChannelsController < AdminController
   # GET /channels
   # GET /channels.json
   def index

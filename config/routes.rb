@@ -13,11 +13,11 @@ Web1::Application.routes.draw do
   resources :books
 
   namespace :admin do
-  	resources :companies, :channels, :products, :balances
-   
+  	resources :companies, :channels, :products, :balances, :imports
+    match 'clear' => 'imports#clear'
+    match 'save' => 'imports#save'
   end
  match '/admin', :to => 'admin/home#index', :as => :admin
- 
 
 end
 

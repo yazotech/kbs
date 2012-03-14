@@ -1,0 +1,74 @@
+<%= content_for :head do %>
+<script type="text/javascript">
+  $(function(){
+    $("#dialog").dialog({autoOpen: false, show: "blind", hide: "blind", width: 580});
+    $("#dialog").dialog("close");
+  });
+</script>
+<% end %>
+<%#= render :partial => 'admin/shared/data_sub_menu' %>
+<div class='toolbar'>
+	
+  <ul class='actions'>
+    <li>
+      <a href="#" class="button" >
+	      <span><img alt="Add" src="/images/admin/icons/add.png">导入数据</span>
+	  </a>
+    </li>
+    <li>
+      <a href="save" class="button" >
+	      <span><img alt="Add" src="/images/admin/icons/add.png">发布数据</span>
+	  	</a>
+    </li>
+    <li>
+      <a href="clear" class="button">
+      	<span><img alt="Add" src="/images/admin/icons/add.png">清空</span>
+      </a>
+    </li>
+  </ul>
+ 
+  <br class='clear' />
+   <br/>
+</div>
+
+<div id="import_data"></div>
+
+<table>
+	<thead>
+		<tr>
+			<th>日期</th>
+			<th>营销ID</th>
+			<th>结算用户数</th>
+			<th>产品类型</th>
+			<th>备注</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @balances.each do |b| %>
+		<tr>
+			<td><%= b.balance_date %></td>
+			<td><%= b.channel_number %></td>
+			<td><%= b.count %></td>
+			<td><%= b.product_id %></td>
+			<td><%= b.remark %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<div id="dialog" title="导入数据">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float:left;margin:0 7px 50px 0;"></span>
+		请把excel表格数据拷贝粘贴到下面文本框中。
+	</p>
+	<%= form_tag 'imports/do_import', :method => :get do %>
+	<%= hidden_field_tag :op, 'import' %>
+    <p>
+      产品：<%= text_field_tag 'import_brand' %>
+    </p>
+	<p>
+		<%= text_area_tag 'import_text', nil, :cols => 60 %>
+    </p>
+    <%= submit_tag '导入数据' %>
+  <% end %>
+</div>

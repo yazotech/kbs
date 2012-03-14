@@ -23,6 +23,15 @@
     <%= f.label :status %><br />
     <%= f.number_field :status %>
   </div>
+
+    <% Channel.find_all_by_product_id(params[:id]).each do |ch|%>
+    <input type="checkbox" checked="checked" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />   
+    <% end %>
+    
+    <% Channel.where('product_id is null or product_id=0').each do |ch| %>
+    <input type="checkbox" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />
+    <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

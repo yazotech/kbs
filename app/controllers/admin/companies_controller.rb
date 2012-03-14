@@ -1,5 +1,5 @@
 module Admin
-class CompaniesController < ApplicationController
+class CompaniesController < AdminController
   # GET /companies
   # GET /companies.json
   def index
@@ -46,7 +46,14 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.update_attributes(params[:company])
-        format.html { redirect_to admin_company_path(@company), :notice => 'Company was successfully updated.' }
+        @company.channels.clear
+        if params[:channels]
+          params[:channels].each do |ch_id, b|
+            @company.channels << Channel.find(ch_id)
+          end
+        end        
+
+        format.html { redirect_to admin_company_path(@company), :enotice => 'Company was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

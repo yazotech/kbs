@@ -27,6 +27,15 @@
     <%= f.label :pay_date %><br />
     <%= f.datetime_select :pay_date %>
   </div>
+
+    <% Channel.find_all_by_company_id(params[:id]).each do |ch|%>
+    <input type="checkbox" checked="checked" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />   
+    <% end %>
+    <hr />
+    <% Channel.where('company_id is null or company_id=0').each do |ch| %>
+    <input type="checkbox" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />
+    <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

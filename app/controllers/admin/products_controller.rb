@@ -1,5 +1,5 @@
 module Admin
-class ProductsController < ApplicationController
+class ProductsController < AdminController
   # GET /products
   # GET /products.json
   def index
@@ -61,6 +61,13 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
+        @product.channels.clear
+        if params[:channels]
+          params[:channels].each do |ch_id, b|
+            @product.channels << Channel.find(ch_id)
+          end
+        end   
+
         format.html { redirect_to admin_product_path(@product), :notice => 'Product was successfully updated.' }
         format.json { head :no_content }
       else
