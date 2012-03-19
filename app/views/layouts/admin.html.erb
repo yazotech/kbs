@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
   
 </head>
-<body>
+<body id='htmlbody'>
 	<div id='page_header'>
-		<ul id='page_nav' >
+		<ul id='page_nav'  class="main_menu">
 			<li><a href='/admin'>home</a></li>
 			<li><%= link_to :companies, :admin_companies %></li>
 			<li><%= link_to :channels, :admin_channels %></li>
