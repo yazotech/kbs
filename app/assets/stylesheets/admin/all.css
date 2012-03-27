@@ -5,6 +5,8 @@
  *
 s
  *= require admin/layout
+ *= require admin/jquery_alters
+ *= require jqueryui/ui
  *= require_self
  *= require_tree .
 */

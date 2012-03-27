@@ -5,13 +5,14 @@
     $("#dialog").dialog("close");
   });
 </script>
+
 <% end %>
 <%#= render :partial => 'admin/shared/data_sub_menu' %>
-<div class='toolbar'>
+<div class='toolbar' style="float:right;">
 	
   <ul class='actions'>
     <li>
-      <a href="#" class="button" >
+      <a href="#" class="button" onclick="$('#dialog').dialog('open');">
 	      <span><img alt="Add" src="/images/admin/icons/add.png">导入数据</span>
 	  </a>
     </li>
@@ -31,11 +32,11 @@
    <br/>
 </div>
 
-<div id="import_data"></div>
+<div id="import_data">
 
-<table>
+<table id="table" spadding="0">
 	<thead>
-		<tr>
+		<tr id="trhead">
 			<th>日期</th>
 			<th>营销ID</th>
 			<th>结算用户数</th>
@@ -55,7 +56,7 @@
 		<% end %>
 	</tbody>
 </table>
-
+</div>
 <div id="dialog" title="导入数据">
 	<p>
 		<span class="ui-icon ui-icon-circle-check" style="float:left;margin:0 7px 50px 0;"></span>
