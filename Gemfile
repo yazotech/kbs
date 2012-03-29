@@ -40,3 +40,5 @@ gem 'jquery-rails'
 
 gem 'therubyracer'
 gem 'devise', '2.0.4'
+gem 'meta_search'
+gem 'will_paginate', '~> 3.0'

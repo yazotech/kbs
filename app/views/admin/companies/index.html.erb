@@ -11,7 +11,7 @@
     <th></th>
   </tr>
 
-<% @companies.each do |company| %>
+<% @collection.each do |company| %>
   <tr>
     <td><%= company.name %></td>
     <td><%= company.balance %></td>
@@ -23,6 +23,7 @@
   </tr>
 <% end %>
 </table>
+<%= will_paginate(@collection) %>
 
 <br />
 

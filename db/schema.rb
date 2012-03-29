@@ -12,13 +12,27 @@
 
 ActiveRecord::Schema.define(:version => 20120313064513) do
 
-  create_table "balances", :force => true do |t|
-    t.datetime "balance_date"
-    t.integer  "product_id"
-    t.string   "channel_number"
+  create_table "agreements", :force => true do |t|
+    t.integer  "sub_company_id"
     t.integer  "company_id"
-    t.decimal  "price",          :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "product_id"
+    t.date     "agreement_start"
+    t.date     "agreement_end"
+    t.date     "agreement_sign"
+    t.integer  "status",          :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "balances", :force => true do |t|
+    t.date     "balance_date"
+    t.string   "channel_number"
     t.integer  "count"
+    t.integer  "product_id"
+    t.integer  "company_id"
+    t.integer  "sub_company_id"
+    t.integer  "agreement_id"
+    t.decimal  "price",          :precision => 8, :scale => 2, :default => 0.0
     t.decimal  "amount",         :precision => 8, :scale => 2, :default => 0.0
     t.string   "remark"
     t.integer  "status"
@@ -48,11 +62,11 @@ ActiveRecord::Schema.define(:version => 20120313064513) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
-    t.decimal  "balance",      :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "balance",       :precision => 8, :scale => 2, :default => 0.0
     t.datetime "balance_date"
-    t.datetime "pay_date"
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
+    t.datetime "last_pay_date"
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
   end
 
   create_table "products", :force => true do |t|
