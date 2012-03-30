@@ -1,36 +1,39 @@
-<%= form_for([:admin, @channel]) do |f| %>
-  <% if @channel.errors.any? %>
+<%= form_for([:admin, @object], :remote => true) do |f| %>
+  <% if @object.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@channel.errors.count, "error") %> prohibited this channel from being saved:</h2>
+      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this channel from being saved:</h2>
 
       <ul>
-      <% @channel.errors.full_messages.each do |msg| %>
+      <% @object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :company_id %><br />
-    <%= f.number_field :company_id %>
+    <%= f.label :client_id %><br />
+    <%= f.number_field :client_id %>
   </div>
   <div class="field">
     <%= f.label :channel_number %><br />
     <%= f.text_field :channel_number %>
   </div>
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :product_id %><br />
+    <%= f.number_field :product_id %>
   </div>
+ 
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :remark %><br />
+    <%= f.text_field :remark %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
     <%= f.number_field :status %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,10 +1,10 @@
-<%= form_for([:admin, @company]) do |f| %>
-  <% if @company.errors.any? %>
+<%= form_for([:admin, @object], :remote => true) do |f| %>
+  <% if @object.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this company from being saved:</h2>
 
       <ul>
-      <% @company.errors.full_messages.each do |msg| %>
+      <% @object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,29 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :balance %><br />
-    <%= f.text_field :balance %>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
   </div>
-  <div class="field">
-    <%= f.label :balance_date %><br />
-    <%= f.datetime_select :balance_date %>
-  </div>
-  <div class="field">
-    <%= f.label :pay_date %><br />
-    <%= f.datetime_select :pay_date %>
-  </div>
-
-    <% Channel.find_all_by_company_id(params[:id]).each do |ch|%>
-    <input type="checkbox" checked="checked" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />   
-    <% end %>
-    <hr />
-    <% Channel.where('company_id is null or company_id=0').each do |ch| %>
-    <input type="checkbox" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />
-    <% end %>
   
   <div class="actions">
     <%= f.submit %>

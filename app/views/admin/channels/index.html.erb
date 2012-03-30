@@ -1,31 +1,27 @@
-<h1>Listing channels</h1>
+<h1>Listing channel</h1>
 
-<table>
+<table class='data-list'>
   <tr>
-    <th>Company</th>
-    <th>Channel number</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Status</th>
+    <th>client_id</th>
+    <th>channel_number</th>
+    <th>product_id</th>
+    <th>remark</th>
+    <th>status</th>
+    <th>updated at</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @channels.each do |channel| %>
-  <tr>
-    <td><%= channel.company_id %></td>
-    <td><%= channel.channel_number %></td>
-    <td><%= channel.title %></td>
-    <td><%= channel.description %></td>
-    <td><%= channel.status %></td>
-    <td><%= link_to 'Show', admin_channel_path(channel) %></td>
-    <td><%= link_to 'Edit', edit_admin_channel_path(channel) %></td>
-    <td><%= link_to 'Destroy', admin_channel_path(channel), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @collection.each do |channel| %>
+   <%= render :partial =>'row', :locals => {:obj => channel} %>
+  <% end %>
 </table>
+<%= will_paginate(@collection) %>
 
+<div class='dialog-window'></div>
 <br />
 
-<%= link_to 'New Channel', new_admin_channel_path %>
+<%= link_to 'New Channel', new_admin_channel_path, :remote => true %>
+
+

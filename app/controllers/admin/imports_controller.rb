@@ -4,6 +4,10 @@ module Admin
   	  @balances = Balance.where('status=0')
   	end
 
+def checkdate
+ 
+end
+
 def save
    Balance.where('status=0').each do |b|
           ch = Channel.find_by_id(b.channel_number)

@@ -2,9 +2,13 @@
 <html>
 <head>
   <title>admin-</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "blueprint/screen.css", :media => 'screen, projection' %>
+  <%= stylesheet_link_tag "blueprint/print.css", :media => 'print' %>
+<!--[if lt IE 8]><%= stylesheet_link_tag "blueprint/ie.css", :media => media="screen, projection" %><![endif]-->
+  <%= stylesheet_link_tag    "admin/all", :media => "all" %>
+  <%= javascript_include_tag "admin/admin" %>
   <%= csrf_meta_tags %>
+
   <%= yield :head%>
 </head>
 <body id='htmlbody'>
@@ -12,9 +16,11 @@
 		<ul id='page_nav'  class="main_menu">
 			<li><a href='/admin'>home</a></li>
 			<li><%= link_to :companies, :admin_companies %></li>
+			<li><%= link_to :clients, :admin_clients %></li>
 			<li><%= link_to :channels, :admin_channels %></li>
 			<li><%= link_to :balances, :admin_balances %></li>
 			<li><%= link_to :products, :admin_products %></li>
+			<li><%= link_to :agreements, :admin_agreements %></li>
 			<li><%= link_to t(:imports), :admin_imports %></li>
 		</ul>
 		<br/>

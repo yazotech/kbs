@@ -1,0 +1,35 @@
+<%= form_for([:admin, @object], :remote => true) do |f| %>
+  <% if @object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+    <div class="field">
+    <%= f.label :balance %><br />
+    <%= f.text_field :balance %>
+  </div>
+   <div class="field">
+    <%= f.label :balance_date %><br />
+    <%= f.datetime_select :balance_date %>
+  </div>
+   <div class="field">
+    <%= f.label :last_pay_date %><br />
+    <%= f.datetime_select :last_pay_date %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

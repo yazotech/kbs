@@ -1,0 +1,2 @@
+$('.dialog-window').dialog('close');
+$('.data-list').append('<%= escape_javascript(render :partial => 'row', :locals => {:obj => @object}) %>');

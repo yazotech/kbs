@@ -1,0 +1,8 @@
+  <tr id='row_<%= obj.id %>'>
+    <td><%= obj.title %></td>
+    <td><%= obj.description %></td>
+    <td><%= obj.status %></td>
+    <td><%= obj.updated_at %></td>
+    <td><%= link_to 'Edit', edit_admin_company_path(obj), :remote => true %></td>
+    <td><%= link_to 'Destroy', admin_company_path(obj), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+  </tr>

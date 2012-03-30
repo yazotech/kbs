@@ -10,18 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313064513) do
+ActiveRecord::Schema.define(:version => 20120306030441) do
 
   create_table "agreements", :force => true do |t|
-    t.integer  "sub_company_id"
     t.integer  "company_id"
+    t.integer  "client_id"
     t.integer  "product_id"
     t.date     "agreement_start"
     t.date     "agreement_end"
     t.date     "agreement_sign"
-    t.integer  "status",          :default => 0
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.decimal  "price",           :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "status",                                        :default => 0
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
   end
 
   create_table "balances", :force => true do |t|
@@ -29,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20120313064513) do
     t.string   "channel_number"
     t.integer  "count"
     t.integer  "product_id"
+    t.integer  "client_id"
     t.integer  "company_id"
-    t.integer  "sub_company_id"
     t.integer  "agreement_id"
     t.decimal  "price",          :precision => 8, :scale => 2, :default => 0.0
     t.decimal  "amount",         :precision => 8, :scale => 2, :default => 0.0
@@ -50,23 +51,30 @@ ActiveRecord::Schema.define(:version => 20120313064513) do
   end
 
   create_table "channels", :force => true do |t|
-    t.integer  "company_id"
+    t.integer  "client_id"
     t.string   "channel_number"
-    t.string   "title"
-    t.string   "description"
+    t.integer  "product_id"
+    t.string   "remark"
     t.integer  "status",         :default => 0
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.integer  "product_id"
   end
 
-  create_table "companies", :force => true do |t|
+  create_table "clients", :force => true do |t|
     t.string   "name"
     t.decimal  "balance",       :precision => 8, :scale => 2, :default => 0.0
     t.datetime "balance_date"
     t.datetime "last_pay_date"
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -78,6 +86,9 @@ ActiveRecord::Schema.define(:version => 20120313064513) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "login_name"
+    t.integer  "client_id"
+    t.integer  "company_id"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -91,8 +102,5 @@ ActiveRecord::Schema.define(:version => 20120313064513) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

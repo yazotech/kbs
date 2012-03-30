@@ -1,10 +1,10 @@
-<%= form_for([:admin, @product]) do |f| %>
-  <% if @product.errors.any? %>
+<%= form_for([:admin, @object], :remote => true) do |f| %>
+  <% if @object.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this product from being saved:</h2>
 
       <ul>
-      <% @product.errors.full_messages.each do |msg| %>
+      <% @object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -19,19 +19,11 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
-  <div class="field">
+    <div class="field">
     <%= f.label :status %><br />
     <%= f.number_field :status %>
   </div>
-
-    <% Channel.find_all_by_product_id(params[:id]).each do |ch|%>
-    <input type="checkbox" checked="checked" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />   
-    <% end %>
-    
-    <% Channel.where('product_id is null or product_id=0').each do |ch| %>
-    <input type="checkbox" name="channels[<%= ch.id %>]" /> <%= ch.channel_number %> <br />
-    <% end %>
-
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,9 @@
+  <tr id='row_<%= obj.id %>'>
+    <td><%= obj.name %></td>
+    <td><%= obj.balance %></td>
+    <td><%= obj.balance_date %></td>
+    <th><%= obj.last_pay_date %><td>
+    <td><%= obj.updated_at %></td>
+    <td><%= link_to 'Edit', edit_admin_client_path(obj), :remote => true %></td>
+    <td><%= link_to 'Destroy', admin_client_path(obj), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+  </tr>

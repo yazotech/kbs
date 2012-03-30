@@ -1,0 +1,13 @@
+  <tr id='row_<%= obj.id %>'>
+    <td><%= obj.company_id %></td>
+    <td><%= obj.client_id %></td>
+    <td><%= obj.product_id %></td>
+    <td><%= obj.agreement_start %></td>
+    <td><%= obj.agreement_end %></td>
+    <td><%= obj.agreement_sign %></td>
+    <td><%= obj.price %></td>
+    <td><%= obj.status %></td>
+    <td><%= obj.updated_at %></td>
+    <td><%= link_to 'Edit', edit_admin_agreement_path(obj), :remote => true %></td>
+    <td><%= link_to 'Destroy', admin_agreement_path(obj), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+  </tr>

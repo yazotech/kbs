@@ -1,0 +1,26 @@
+<h1>Listing clients </h1>
+
+<table class='data-list'>
+  <tr>
+    <th>name</th>
+    <th>balance</th>
+    <th>balance_date</th>
+    <th>last_pay_date</th>
+    <th>updated at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @collection.each do |client| %>
+   <%= render :partial =>'row', :locals => {:obj => client} %>
+  <% end %>
+</table>
+<%= will_paginate(@collection) %>
+
+<div class='dialog-window'></div>
+<br />
+
+<%= link_to 'New Client', new_admin_client_path, :remote => true %>
+
+

@@ -1,39 +1,31 @@
 <h1>Listing balances</h1>
 
-<table>
+<table class='data-list'>
   <tr>
-    <th>Balance date</th>
-    <th>Product</th>
-    <th>Channel number</th>
-    <th>Company</th>
-    <th>Price</th>
-    <th>Count</th>
-    <th>Amount</th>
-    <th>Remark</th>
-    <th>Status</th>
+    <th>balance_date</th>
+    <th>channel_bumber</th>
+    <th>count</th>
+    <th>product_id</th>
+    <th>client_id</th>
+    <th>balance_id</th>
+    <th>agreement_id</th>
+    <th>price</th>
+    <th>amount</th>
+    <th>remark</th>
+    <th>status</th>
+    <th>update_at</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @balances.each do |balance| %>
-  <tr>
-    <td><%= balance.balance_date %></td>
-    <td><%= balance.product_id %></td>
-    <td><%= balance.channel_number %></td>
-    <td><%= balance.company_id %></td>
-    <td><%= balance.price %></td>
-    <td><%= balance.count %></td>
-    <td><%= balance.amount %></td>
-    <td><%= balance.remark %></td>
-    <td><%= balance.status %></td>
-    <td><%= link_to 'Show', admin_balance_path(balance) %></td>
-    <td><%= link_to 'Edit', edit_admin_balance_path(balance) %></td>
-    <td><%= link_to 'Destroy', admin_balance_path(balance), :confirm => 'Are you sure?',  :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @collection.each do |balance| %>
+   <%= render :partial =>'row', :locals => {:balance => balance} %>
+  <% end %>
 </table>
+<%= will_paginate(@collection) %>
 
+<div class='dialog-window'></div>
 <br />
 
-<%= link_to 'New Balance', new_admin_balance_path %>
+

@@ -1,5 +1,4 @@
 module Admin
-class CompaniesController < ResourceController
-  
-end
+	class CompaniesController < ResourceController
+	end
 end

@@ -1,0 +1,10 @@
+  <tr id='row_<%= obj.id %>'>
+    <td><%= obj.client_id %></td>
+    <td><%= obj.channel_number %></td>
+    <td><%= obj.product_id %></td>
+    <td><%= obj.remark %></td>
+    <td><%= obj.status %></td>
+    <td><%= obj.updated_at %></td>
+    <td><%= link_to 'Edit', edit_admin_channel_path(obj), :remote => true %></td>
+    <td><%= link_to 'Destroy', admin_channel_path(obj), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+  </tr>

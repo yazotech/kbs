@@ -1,27 +1,25 @@
 <h1>Listing products</h1>
 
-<table>
+<table class='data-list'>
   <tr>
-    <th>Title</th>
+    <th>title</th>
     <th>Description</th>
-    <th>Status</th>
+    <th>status</th>
+    <th>updated at</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.title %></td>
-    <td><%= product.description %></td>
-    <td><%= product.status %></td>
-    <td><%= link_to 'Show', admin_product_path(product) %></td>
-    <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
-    <td><%= link_to 'Destroy', admin_product_path(product), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @collection.each do |product| %>
+   <%= render :partial =>'row', :locals => {:obj => product} %>
+  <% end %>
 </table>
+<%= will_paginate(@collection) %>
 
+<div class='dialog-window'></div>
 <br />
 
-<%= link_to 'New Product', new_admin_product_path %>
+<%= link_to 'New Product', new_admin_product_path, :remote => true %>
+
+
