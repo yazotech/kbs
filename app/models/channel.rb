@@ -1,4 +1,4 @@
 class Channel < ActiveRecord::Base
-	belongs_to :clients
-	belongs_to :products
+	belongs_to :client
+	belongs_to :product
 end

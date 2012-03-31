@@ -15,6 +15,7 @@ Web1::Application.routes.draw do
   namespace :admin do
   	resources :companies, :clients, :agreements, :channels, :products, :balances, :imports
     match 'clear' => 'imports#clear'
+     match 'checkafter' => 'imports#checkafter'
     match 'save' => 'imports#save'
     match 'checkdate' => 'imports#checkdate'
   end

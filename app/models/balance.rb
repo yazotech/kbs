@@ -1,5 +1,6 @@
 class Balance < ActiveRecord::Base
-	belongs_to :companies
-	belongs_to :products
-	belongs_to :clients
+	belongs_to :company
+	belongs_to :product
+	belongs_to :client
+	belongs_to :agreement
 end
