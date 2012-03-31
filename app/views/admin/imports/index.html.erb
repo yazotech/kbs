@@ -1,13 +1,3 @@
-<%= content_for :head do %>
-<script type="text/javascript">
-  $(function(){
-    $("#dialog").dialog({autoOpen: false, show: "blind", hide: "blind", width: 580});
-    $("#dialog").dialog("close");
-  });
-</script>
-
-<% end %>
-<%#= render :partial => 'admin/shared/data_sub_menu' %>
 <div class='toolbar' style="float:right;">
 	
   <ul class='actions'>
@@ -44,25 +34,33 @@
 		<tr id="trhead">
 			<th>日期</th>
 			<th>营销ID</th>
+			<th>公司</th>
+			<th>产品</th>
 			<th>结算用户数</th>
-			<th>产品类型</th>
+			<th>单价</th>
+			<th>总价格</th>
 			<th>备注</th>
 		</tr>
 	</thead>
 	<tbody>
+	<% if @balances !=nil %>
 		<% @balances.each do |b| %>
 		<tr>
 			<td><%= b.balance_date %></td>
 			<td><%= b.channel_number %></td>
+			<td><%= Company.find_by_id(b.company_id).title if b.company_id %></td>
+			<td><%= Product.find_by_id(b.product_id).title if b.product_id %></td>
 			<td><%= b.count %></td>
-			<td><%= b.product_id %></td>
+			<td><%= b.price %></td>
+			<td><%= b.amount %></td>
 			<td><%= b.remark %></td>
 		</tr>
+		<% end %>
 		<% end %>
 	</tbody>
 </table>
 </div>
-<div id="dialog" title="导入数据">
+<div id="dialog" title="导入数据" class='dialog-window'>
 	<p>
 		<span class="ui-icon ui-icon-circle-check" style="float:left;margin:0 7px 50px 0;"></span>
 		请把excel表格数据拷贝粘贴到下面文本框中。
