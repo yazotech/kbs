@@ -11,6 +11,7 @@ class CreateBalances < ActiveRecord::Migration
     	t.date :balance_date
         t.string :channel_number
         t.integer :count
+        t.integer :channel_id
     	t.integer :product_id
     	t.integer :client_id
         t.integer :company_id
@@ -24,9 +25,12 @@ class CreateBalances < ActiveRecord::Migration
  
    create_table :clients do |t|
     	t.string :name
+        t.string :tel
+        t.string :remark
     	t.decimal :balance, :precision => 8, :scale => 2, :default => 0
-    	t.datetime :balance_date
-    	t.datetime :last_pay_date
+    	t.date :balance_date
+    	t.date :last_pay_date
+        t.datetime :last_login
     	t.timestamps
     end        
 

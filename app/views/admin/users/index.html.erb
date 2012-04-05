@@ -1,17 +1,17 @@
-<h1>Listing clients </h1>
+<h2>Users</h2>
 
 <table class='data-list'>
   <thead>
   <tr>
     <th>id</th>
-    <th>name</th>
-    <th>tel</th>
-    <th>remark</th>
-    <th>last login</th>
-    <th>balance</th>
-    <th>balance_date</th>
-    <th>last_pay_date</th>
-    <th>updated at</th>
+    <th>login name</th>
+    <th>email</th>
+    <th>company</th>
+    <th>sign in</th>
+    <th>current signin</th>
+    <th>last signin</th>
+    <th>ip</th>
+    <th>last ip</th>
     <th></th>
     <th></th>
     <th></th>
@@ -28,6 +28,6 @@
 <div class='dialog-window'></div>
 <br />
 
-<%= link_to 'New Client', new_admin_client_path, :remote => true %>
+<%= link_to 'New User', new_admin_user_path, :remote => true %>
 
 

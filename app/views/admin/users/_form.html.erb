@@ -45,19 +45,10 @@
   </div>
   </div>
 
-  <div class='span-8 last'>
-    <% if params[:id] %>
-    <% Channel.find_all_by_client_id(params[:id]).each do |ch|%>
-    <input type="checkbox" name="rm_channels[<%= ch.id %>]" id="ch_<%= ch.id %>" />
-    <label for="ch_<%=ch.id%>"><%= ch.channel_number %></label> &nbsp;
-    <% end %>
-    <hr />
-    <% Channel.where('client_id is null or client_id=0').each do |ch| %>
-    <input type="checkbox" name="add_channels[<%= ch.id %>]" /> <%= ch.channel_number %> &nbsp;
-    <% end %>
-    <% end %>   
+  <div class='span-8'>
+    
   </div>
-</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

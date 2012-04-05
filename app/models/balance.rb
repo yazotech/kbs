@@ -4,5 +4,7 @@ class Balance < ActiveRecord::Base
 	belongs_to :client
 	belongs_to :agreement
 
-	scope :new_input, where(:status => 0)
+	scope :new_input, where('status<10')
+	scope :checked, where('status=1')
+	scope :history, where('status>=10')
 end

@@ -1,6 +1,7 @@
 <h1>Listing agreement</h1>
 
 <table class='data-list'>
+  <thead>
   <tr>
     <th>company_id</th>
     <th>client_id</th>
@@ -15,10 +16,13 @@
     <th></th>
     <th></th>
   </tr>
+  </thead>
+  <tbody>
 
   <% @collection.each do |agreement| %>
    <%= render :partial =>'row', :locals => {:obj => agreement} %>
   <% end %>
+  </tbody>
 </table>
 <%= will_paginate(@collection) %>
 

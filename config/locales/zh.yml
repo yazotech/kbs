@@ -1,6 +1,34 @@
+
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 zh:
-  hello: "Hello world"
-  imports: "--imports--"
+  home: "首页"
+  channels: '渠道'
+  companies: "公司"
+  clients: "客户"
+  balances: "结算数据"
+  products: "产品"
+  agreements: "协议"
+  imports: "导入数据"
+  status: "状态"
+  updated_at: "最后更新"
+  edit: "修改"
+  destroy: "删除"
+  operates: "操作"
+  are_u_sure: "你确认吗？"
+  description: '说明'
+
+  admin:
+    companies:
+      index:
+        title: "标题"
+        companies: '公司'
+
+    channels:
+      index: 
+        channel_number: "渠道号"
+        client: "客户"
+        product: "产品"
+        remark: "备注"
+        new_channel: "新增渠道"
+

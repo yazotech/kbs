@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120306030441) do
     t.date     "balance_date"
     t.string   "channel_number"
     t.integer  "count"
+    t.integer  "channel_id"
     t.integer  "product_id"
     t.integer  "client_id"
     t.integer  "company_id"
@@ -39,15 +40,6 @@ ActiveRecord::Schema.define(:version => 20120306030441) do
     t.integer  "status"
     t.datetime "created_at",                                                    :null => false
     t.datetime "updated_at",                                                    :null => false
-  end
-
-  create_table "books", :force => true do |t|
-    t.string   "title"
-    t.string   "author"
-    t.string   "isbn"
-    t.text     "brief"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "channels", :force => true do |t|
@@ -62,9 +54,12 @@ ActiveRecord::Schema.define(:version => 20120306030441) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
+    t.string   "tel"
+    t.string   "remark"
     t.decimal  "balance",       :precision => 8, :scale => 2, :default => 0.0
-    t.datetime "balance_date"
-    t.datetime "last_pay_date"
+    t.date     "balance_date"
+    t.date     "last_pay_date"
+    t.datetime "last_login"
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
   end

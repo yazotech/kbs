@@ -1,19 +1,20 @@
-<h1>Listing companies</h1>
+<h2><%= t(:companies) %></h2>
 
 <table class='data-list'>
+  <thead>
   <tr>
-    <th>title</th>
-    <th>Description</th>
-    <th>status</th>
-    <th>updated at</th>
-    <th></th>
-    <th></th>
+    <th><%= t('.title') %></th>
+    <th><%= t(:description) %></th>
+    <th><%= t(:status) %></th>
+    <th><%= t(:updated_at) %></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
   <% @collection.each do |company| %>
    <%= render :partial =>'row', :locals => {:obj => company} %>
   <% end %>
+</tbody>
 </table>
 <%= will_paginate(@collection) %>
 

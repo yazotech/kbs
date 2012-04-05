@@ -1,21 +1,22 @@
-<h1>Listing channel</h1>
+<h2><%= t(:channels) %></h2>
 
 <table class='data-list'>
+  <thead>
   <tr>
-    <th>client_id</th>
-    <th>channel_number</th>
-    <th>product_id</th>
-    <th>remark</th>
-    <th>status</th>
-    <th>updated at</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t('.channel_number') %></th>
+    <th><%= t('.client') %></th>
+    <th><%= t('.product') %></th>
+    <th><%= t(:remark) %></th>
+    <th><%= t(:status) %></th>
+    <th><%= t(:updated_at) %></th>
+    <th><%= t(:operates) %></th>
   </tr>
-
+  </thead>
+  <tbody>
   <% @collection.each do |channel| %>
    <%= render :partial =>'row', :locals => {:obj => channel} %>
   <% end %>
+  </tbody>
 </table>
 <%= will_paginate(@collection) %>
 

@@ -2,11 +2,9 @@
 <% if !@balances %>
 <h2>未找到您的数据。</h2>
 <% else %>
-<h1><b id="<%= @user.id %>"><%= @company.name %></b> 数据统计表</h1>
+<h1><b><%= @client.name %></b> 数据统计表</h1>
 <p>渠道号：
-	<% @company.channels.each do |ch| %>
-		<%= ch.channel %>, 
-	<% end %></p>
+</p>
 
 <table>
 	<thead>

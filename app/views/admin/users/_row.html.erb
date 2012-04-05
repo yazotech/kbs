@@ -1,0 +1,13 @@
+  <tr id='row_<%= obj.id %>'>
+  	<td><%= obj.id %></td>
+    <td><%= obj.login_name %></td>
+    <td><%= obj.email %></td>
+    <td><%= obj.company_id %></td>
+    <td><%= obj.sign_in_count %></td>
+    <td><%= obj.current_sign_in_at %></td>
+    <td><%= obj.last_sign_in_at %></td>
+    <th><%= obj.current_sign_in_ip %><td>
+    <td><%= obj.last_sign_in_ip %></td>
+    <td><%= link_to 'Edit', edit_admin_client_path(obj), :remote => true %></td>
+    <td><%= link_to 'Destroy', admin_client_path(obj), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+  </tr>

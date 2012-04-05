@@ -7,16 +7,21 @@ module Admin
     Balance.new_input.each do |b|
       ch = Channel.where(:channel_number => b.channel_number).first
       if ch
+        b.channel_id = ch.id
         b.product_id = ch.product_id
         b.client_id = ch.client_id
 
-        agr = Agreement.where(['client_id=? and product_id=? and agreement_start>=? and agreement_end<=?', ch.client_id, ch.product_id, b.balance_date, b.balance_date]).first
-        if agr
-          b.company_id = agr.comapny_id
-          b.agreement_id = agr.id
-          b.price = agr.price
-          b.amount = b.count * b.price
+        if b.channel_id && b.channel_id > 0 && b.product_id && b.product_id > 0 && b.client_id && b.client_id > 0
+          agr = Agreement.where(['client_id=? and product_id=? and agreement_start<=? and agreement_end>=?', ch.client_id, ch.product_id, b.balance_date, b.balance_date]).first
+          if agr
+            b.company_id = agr.company_id
+            b.agreement_id = agr.id
+            b.price = agr.price
+            b.amount = b.count * b.price
+            b.status = 1
+          end
         end
+
         b.save
       end
     end

@@ -21,6 +21,7 @@ module Admin
     def update
       load_object
       @object.update_attributes(params[object_name.parameterize('_')])
+      invoke_callbacks(:update, :after)
       render 'admin/shared/update'
     end
     def create

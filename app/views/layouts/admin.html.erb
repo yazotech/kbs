@@ -14,19 +14,19 @@
 <body id='htmlbody'>
 	<div id='page_header'>
 		<ul id='page_nav'  class="main_menu">
-			<li><a href='/admin'>home</a></li>
-			<li><%= link_to :companies, :admin_companies %></li>
-			<li><%= link_to :clients, :admin_clients %></li>
-			<li><%= link_to :channels, :admin_channels %></li>
-			<li><%= link_to :balances, :admin_balances %></li>
-			<li><%= link_to :products, :admin_products %></li>
-			<li><%= link_to :agreements, :admin_agreements %></li>
+			<li><%= link_to t(:home), '/admin' %></li>
+			<li><%= link_to t(:balances), :admin_balances %></li>
 			<li><%= link_to t(:imports), :admin_imports %></li>
+			<li><%= link_to t(:channels), :admin_channels %></li>
+			<li><%= link_to t(:clients), :admin_clients %></li>
+			<li><%= link_to t(:products), :admin_products %></li>
+			<li><%= link_to t(:companies), :admin_companies %></li>
+			<li><%= link_to t(:agreements), :admin_agreements %></li>
 		</ul>
 		<br/>
 	</div>
 	<div id='page_body'>
-
+		<div class='page_container'>
     <% if flash[:error] %>
       <div class="flash error"><%= flash[:error] %></div>
     <% end %>
@@ -38,6 +38,7 @@
     <% end %>
 
 		<%= yield %>
+		</div>
 
 	</div>
 	<div id='page_footer'>

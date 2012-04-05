@@ -1,0 +1,35 @@
+#page_header{
+	background-color:#315ca1;
+	height:60px;
+	width: 90%;
+	margin:auto;
+}
+#page_footer{
+	background-color:#315ca1;
+	height:50px;
+	margin: auto;
+	width: 90%;
+}
+#page_body{
+	background-color:#FFFFFF;
+	margin: auto;
+	width: 90%;
+}
+.page_container {padding: 8px;}
+#htmlbody{
+background-color:#315ca1;	
+}
+ .main_menu{
+	padding-left:100px; padding: 20px;
+}
+.main_menu li{
+	float: left;width:80px;
+	border:solid 1px #ccc;list-style: none;
+	text-align: center;
+  a {
+  	display:block;color:white;text-decoration: none;
+  	&:hover {background-color:lightYellow; color:red;}
+  }
+}
+
+.container {width:auto;}

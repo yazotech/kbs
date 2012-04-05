@@ -1,6 +1,7 @@
 <h1>Listing products</h1>
 
 <table class='data-list'>
+  <thead>
   <tr>
     <th>title</th>
     <th>Description</th>
@@ -10,10 +11,12 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
   <% @collection.each do |product| %>
    <%= render :partial =>'row', :locals => {:obj => product} %>
   <% end %>
+</tbody>
 </table>
 <%= will_paginate(@collection) %>
 

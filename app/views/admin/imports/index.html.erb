@@ -1,4 +1,4 @@
-<div class='toolbar' style="float:right;">
+<div class='toolbar'>
 	
   <ul class='actions'>
     <li>
@@ -33,13 +33,16 @@
 	<thead>
 		<tr id="trhead">
 			<th>日期</th>
-			<th>营销ID</th>
+			<th>ch</th>
+			<th>结算用户数</th>
+			<th>client</th>
 			<th>公司</th>
 			<th>产品</th>
-			<th>结算用户数</th>
+			<th>agreement</th>
 			<th>单价</th>
 			<th>总价格</th>
 			<th>备注</th>
+			<th>status</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -48,12 +51,15 @@
 		<tr>
 			<td><%= b.balance_date %></td>
 			<td><%= b.channel_number %></td>
+			<td><%= b.count %></td>
+			<td><%= b.client_id %></td>
 			<td><%= Company.find_by_id(b.company_id).title if b.company_id %></td>
 			<td><%= Product.find_by_id(b.product_id).title if b.product_id %></td>
-			<td><%= b.count %></td>
+			<td><%= b.agreement_id %></td>
 			<td><%= b.price %></td>
 			<td><%= b.amount %></td>
 			<td><%= b.remark %></td>
+			<td><%= b.status %></td>
 		</tr>
 		<% end %>
 		<% end %>
@@ -67,12 +73,9 @@
 	</p>
 	<%= form_tag 'imports/do_import', :method => :get do %>
 	<%= hidden_field_tag :op, 'import' %>
-    <p>
-      产品：<%= text_field_tag 'import_brand' %>
-    </p>
 	<p>
 		<%= text_area_tag 'import_text', nil, :cols => 60 %>
-    </p>
+  </p>
     <%= submit_tag '导入数据' %>
   <% end %>
 </div>

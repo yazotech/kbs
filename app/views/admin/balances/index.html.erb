@@ -1,6 +1,7 @@
 <h1>Listing balances</h1>
 
 <table class='data-list'>
+  <thead>
   <tr>
     <th>balance_date</th>
     <th>channel_bumber</th>
@@ -18,10 +19,12 @@
     <th></th>
     <th></th>
   </tr>
-
+  </thead>
+  <tbody>
   <% @collection.each do |balance| %>
    <%= render :partial =>'row', :locals => {:balance => balance} %>
   <% end %>
+  </tbody>
 </table>
 <%= will_paginate(@collection) %>
 
