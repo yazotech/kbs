@@ -7,7 +7,7 @@ Web1::Application.routes.draw do
   namespace :admin do
   	resources :companies, :clients, :agreements, :channels, :products, :balances, :imports
     resources :users
-   
+    match 'checkpro' => 'channels#checkpro'
     match 'clear' => 'imports#clear'
     match 'save' => 'imports#save'
     match 'checkdate' => 'imports#checkdate'
