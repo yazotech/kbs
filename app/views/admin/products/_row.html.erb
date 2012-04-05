@@ -1,8 +1,9 @@
   <tr id='row_<%= obj.id %>'>
     <td><%= obj.title %></td>
     <td><%= obj.description %></td>
+    <td><%= obj.channel_number %></td>
     <td><%= obj.status %></td>
     <td><%= obj.updated_at %></td>
-    <td><%= link_to 'Edit', edit_admin_product_path(obj), :remote => true %></td>
-    <td><%= link_to 'Destroy', admin_product_path(obj), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+    <td><%= link_to '编辑', edit_admin_product_path(obj), :remote => true %></td>
+    <td><%= link_to '删除', admin_product_path(obj), :confirm => '确定删除？', :method => :delete, :remote => true %></td>
   </tr>
