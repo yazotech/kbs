@@ -1,4 +1,6 @@
 Web1::Application.routes.draw do
+  devise_for :emps
+
   devise_for :users
 
   root :to => 'home#index'
