@@ -1,7 +1,7 @@
 Web1::Application.routes.draw do
   devise_for :users
 
-  root :to => 'books#index'
+  root :to => 'home#index'
   resources :balances
 
   namespace :admin do

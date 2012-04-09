@@ -29,15 +29,8 @@ module Admin
   end
 
   def save
-   Balance.where('status=0').each do |b|
-    ch = Channel.find_by_id(b.channel_number)
-    if ch
-      b.company_id= ch.company_id
-      b.status = 1
-      b.save!
-    end
-  end
-  redirect_to :action => :index, :controller => :imports
+    Balance.new_input.where('company_id is not null and company_id > 0 and status=1').update_all(:status => 10)
+    redirect_to :action => :index
   end
 
 def clear
