@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
      belongs_to :client
-     belongs_to :company
     
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,5 +7,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :login_name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :login_name, :email, :password, :password_confirmation, :remember_me , :client_id
 end

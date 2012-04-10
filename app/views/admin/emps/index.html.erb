@@ -1,0 +1,31 @@
+<h2>用户列表</h2>
+<table class='data-list'>
+  <thead>
+  <tr>
+    <th>用户编号</th>
+    <th>登录名称</th>
+    <th>邮箱</th>
+    <th>登录次数</th>
+    <th>当前登录时间</th>
+    <th>最后登录时间</th>
+    <th>当前登录IP</th>
+    <th>最后登录IP</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <% @collection.each do |emp| %>
+   <%= render :partial =>'row', :locals => {:obj => emp} %>
+  <% end %>
+</tbody>
+</table>
+<%= will_paginate(@collection) %>
+
+<div class='dialog-window'></div>
+<br />
+
+<%= link_to '新建用户', new_admin_emp_path, :remote => true %>
+
+
