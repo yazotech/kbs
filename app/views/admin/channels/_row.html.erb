@@ -1,7 +1,7 @@
   <tr id='row_<%= obj.id %>'>
     <td><%= obj.channel_number %></td>
-    <td><%= obj.client.name if obj.client_id %></td>
-    <td><%= obj.product.title if obj.product_id %></td>
+    <td><%= obj.client.name if obj.client %></td>
+    <td><%= obj.product.title if obj.product %></td>
     <td><%= obj.remark %></td>
     <td><%= obj.status %></td>
     <td><%= obj.updated_at %></td>

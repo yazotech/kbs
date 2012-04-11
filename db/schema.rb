@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120409054644) do
+ActiveRecord::Schema.define(:version => 20120411050313) do
 
   create_table "agreements", :force => true do |t|
     t.integer  "company_id"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(:version => 20120409054644) do
     t.datetime "updated_at",                                                     :null => false
   end
 
+  add_index "agreements", ["agreement_end"], :name => "index_agreements_on_agreement_end"
+  add_index "agreements", ["agreement_sign"], :name => "index_agreements_on_agreement_sign"
+  add_index "agreements", ["client_id"], :name => "index_agreements_on_client_id"
+  add_index "agreements", ["product_id"], :name => "index_agreements_on_product_id"
+
   create_table "balances", :force => true do |t|
     t.date     "balance_date"
     t.string   "channel_number"
@@ -36,11 +41,20 @@ ActiveRecord::Schema.define(:version => 20120409054644) do
     t.integer  "agreement_id"
     t.decimal  "price",          :precision => 8, :scale => 2, :default => 0.0
     t.decimal  "amount",         :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "product_price",  :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "product_amount", :precision => 8, :scale => 2, :default => 0.0
     t.string   "remark"
     t.integer  "status"
+    t.integer  "publish_status"
     t.datetime "created_at",                                                    :null => false
     t.datetime "updated_at",                                                    :null => false
   end
+
+  add_index "balances", ["agreement_id"], :name => "index_balances_on_agreement_id"
+  add_index "balances", ["channel_id"], :name => "index_balances_on_channel_id"
+  add_index "balances", ["client_id"], :name => "index_balances_on_client_id"
+  add_index "balances", ["company_id"], :name => "index_balances_on_company_id"
+  add_index "balances", ["product_id"], :name => "index_balances_on_product_id"
 
   create_table "channels", :force => true do |t|
     t.integer  "client_id"
@@ -51,6 +65,10 @@ ActiveRecord::Schema.define(:version => 20120409054644) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
+
+  add_index "channels", ["channel_number"], :name => "index_channels_on_channel_number", :unique => true
+  add_index "channels", ["client_id"], :name => "index_channels_on_client_id"
+  add_index "channels", ["product_id"], :name => "index_channels_on_product_id"
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -74,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20120409054644) do
 
   create_table "emps", :force => true do |t|
     t.string   "login_name"
-    t.string   "email",                  :default => "", :null => false
+    t.string   "email"
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -85,10 +103,6 @@ ActiveRecord::Schema.define(:version => 20120409054644) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "password_salt"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.integer  "failed_attempts",        :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
@@ -98,25 +112,38 @@ ActiveRecord::Schema.define(:version => 20120409054644) do
   end
 
   add_index "emps", ["authentication_token"], :name => "index_emps_on_authentication_token", :unique => true
-  add_index "emps", ["confirmation_token"], :name => "index_emps_on_confirmation_token", :unique => true
-  add_index "emps", ["email"], :name => "index_emps_on_email", :unique => true
+  add_index "emps", ["login_name"], :name => "index_emps_on_login_name", :unique => true
   add_index "emps", ["reset_password_token"], :name => "index_emps_on_reset_password_token", :unique => true
   add_index "emps", ["unlock_token"], :name => "index_emps_on_unlock_token", :unique => true
 
   create_table "products", :force => true do |t|
     t.string   "title"
-    t.string   "description"
-    t.integer  "status",         :default => 0
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
     t.string   "channel_number"
+    t.decimal  "price",          :precision => 8, :scale => 2, :default => 0.0
+    t.string   "description"
+    t.integer  "status",                                       :default => 0
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
   end
+
+  add_index "products", ["channel_number"], :name => "index_products_on_channel_number"
+
+  create_table "user_infos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "real_name"
+    t.string   "website"
+    t.string   "phone"
+    t.string   "remark"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_infos", ["user_id"], :name => "index_user_infos_on_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login_name"
     t.integer  "client_id"
-    t.integer  "company_id"
-    t.string   "email",                  :default => "", :null => false
+    t.string   "email"
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -129,5 +156,7 @@ ActiveRecord::Schema.define(:version => 20120409054644) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
+
+  add_index "users", ["login_name"], :name => "index_users_on_login_name", :unique => true
 
 end

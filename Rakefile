@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Web1::Application.load_tasks
+Kbs::Application.load_tasks

@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Web1::Application.initialize!
+Kbs::Application.initialize!

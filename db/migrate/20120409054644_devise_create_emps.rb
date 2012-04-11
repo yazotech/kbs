@@ -3,7 +3,7 @@ class DeviseCreateEmps < ActiveRecord::Migration
     create_table(:emps) do |t|
       ## Database authenticatable
       t.string :login_name
-      t.string :email,              :null => false, :default => ""
+      t.string :email
       t.string :encrypted_password, :null => false, :default => ""
 
       ## Recoverable
@@ -24,10 +24,10 @@ class DeviseCreateEmps < ActiveRecord::Migration
       t.string :password_salt
 
       ## Confirmable
-      t.string   :confirmation_token
-      t.datetime :confirmed_at
-      t.datetime :confirmation_sent_at
-      t.string   :unconfirmed_email # Only if using reconfirmable
+      #t.string   :confirmation_token
+      #t.datetime :confirmed_at
+      #t.datetime :confirmation_sent_at
+      #t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
       t.integer  :failed_attempts, :default => 0 # Only if lock strategy is :failed_attempts
@@ -41,9 +41,9 @@ class DeviseCreateEmps < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :emps, :email,                :unique => true
+    add_index :emps, :login_name,           :unique => true
     add_index :emps, :reset_password_token, :unique => true
-    add_index :emps, :confirmation_token,   :unique => true
+    #add_index :emps, :confirmation_token,   :unique => true
     add_index :emps, :unlock_token,         :unique => true
     add_index :emps, :authentication_token, :unique => true
   end

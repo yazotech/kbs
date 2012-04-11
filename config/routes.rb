@@ -1,4 +1,4 @@
-Web1::Application.routes.draw do
+Kbs::Application.routes.draw do
   devise_for :emps
 
   devise_for :users
