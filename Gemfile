@@ -1,11 +1,11 @@
-source 'http://ruby.taobao.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
+#gem 'mysql2'
 
 gem 'json'
 
@@ -36,7 +36,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug'
+#gem 'ruby-debug'
 
 gem 'therubyracer'
 gem 'devise', '2.0.4'
