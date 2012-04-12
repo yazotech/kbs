@@ -1,4 +1,10 @@
 <h2><%= t(:channels) %></h2>
+<div class="search-box">
+  <%= form_for [:admin, @search] do |f| %>
+  渠道号: <%= f.text_field :channel_number_starts_with %>
+  <%= f.submit %>
+  <% end %>
+</div>
  <a href="checkpro" class="button" style="float:right'">
         <span><img alt="Add" src="/images/admin/icons/add.png">检查产品</span>
       </a>

@@ -10,7 +10,7 @@ zh:
   products: "产品"
   agreements: "协议"
   users: "用户"
-  emps: "公司后台用户"
+  emps: "管理员"
   imports: "导入数据"
   status: "状态"
   updated_at: "最后更新"

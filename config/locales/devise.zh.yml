@@ -1,29 +1,33 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
-en:
+zh:
+  sign_in: "登录"
+  login_name: "登录名称"
+  password: "登录密码"
+  remember_me: "记住登录信息供下次登录使用"
   errors:
     messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
-      not_locked: "was not locked"
+      expired: "已经过期，请重新申请"
+      not_found: "没找到"
+      already_confirmed: "已经确认过，请尝试登录"
+      not_locked: "没有被锁定"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "%{resource}保存时发生了1个错误:"
+        other: "%{resource}保存时发生了%{count}个错误:"
 
   devise:
     failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
+      already_authenticated: '您已经登录。'
+      unauthenticated: '您必须先登录才能使用。'
       unconfirmed: 'You have to confirm your account before continuing.'
       locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
+      invalid: '用户名或密码错。'
+      invalid_token: '不合法的认证标签。'
+      timeout: '您的登录超时，请重新登录。'
+      inactive: '你的账户还没有激活。'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: '登录成功。'
+      signed_out: '成功退出登录。'
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'

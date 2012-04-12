@@ -1,17 +1,26 @@
-<h2>Sign in</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :login_name %><br />
-  <%= f.text_field :login_name %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
+<div id="login-box">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<h2><%= t(:sign_in) %></h2>
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+	<br>
+	<br>
+	<div id="login-box-name" style="margin-top:20px;">Email:</div><div id="login-box-field" style="margin-top:20px;">
+	<%= f.text_field :login_name, :class => 'form-login', :size => 30 %>
+	</div>
+	<div id="login-box-name">Password:</div><div id="login-box-field">
+  <%= f.password_field :password, :class => 'form-login', :size => 30 %>
+	</div>
+	<br>
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <span class="login-box-options">
+    <%= f.check_box :remember_me %> <%= f.label t(:remember_me) %>
+    </span>
   <% end -%>
+	
+	<br>
+	<br>
+	<%= image_submit_tag "/assets/login/login-btn.png", :height => 42, :width => 103, :style => 'margin-left:90px;' %>
+	<% end %>
+</div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "links" %>
+<%#= render "links" %>

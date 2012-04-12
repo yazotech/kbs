@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Web1</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <title>admin-</title>
+  <%= stylesheet_link_tag "blueprint/screen.css", :media => 'screen, projection' %>
+  <%= stylesheet_link_tag "blueprint/print.css", :media => 'print' %>
+<!--[if lt IE 8]><%= stylesheet_link_tag "blueprint/ie.css", :media => media="screen, projection" %><![endif]-->
+  <%= stylesheet_link_tag    "admin/all", :media => "all" %>
+  <%= javascript_include_tag "admin/admin" %>
+  <%= csrf_meta_tags %>	
 </head>
 <body>
 
 <div>
-	<p class="notice"><%= notice %></p>
-   	<p class="alert"><%= alert %></p>	
+    <% if flash[:error] %>
+      <div class="flash error"><%= flash[:error] %></div>
+    <% end %>
+    <% if notice %>
+      <div class="flash notice"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+    	<div class="alert"><%= alert %></div>
+    <% end %>
 </div>	
 
 <%= yield %>
