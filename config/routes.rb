@@ -4,12 +4,17 @@ Kbs::Application.routes.draw do
   devise_for :users
 
   root :to => 'home#index'
-  resources :balances
+  resources :balances do
+    collection do
+      get :login, :q, :month_list
+    end
+  end
 
   namespace :admin do
   	resources :companies, :clients, :agreements, :channels, :products, :balances, :imports
     resources :users
     resources :emps
+    match 'seachuser' => 'users#seachuser'
     match 'checkpro' => 'channels#checkpro'
     match 'clear' => 'imports#clear'
     match 'save' => 'imports#save'
