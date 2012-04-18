@@ -106,8 +106,8 @@
       end
 
       def link_to_with_icon(icon_name, text, url, options = {})
-        options[:class] = (options[:class].to_s + ' icon_link').strip
-        link_to(icon(icon_name) + ' ' + text, url, options)
+        options[:class] = (options[:class].to_s + ' button').strip
+        link_to( raw('<span>' + icon(icon_name) + ' ' + text + '</span>'), url, options)
       end
 
       def icon(icon_name)

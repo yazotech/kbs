@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag "blueprint/print.css", :media => 'print' %>
 <!--[if lt IE 8]><%= stylesheet_link_tag "blueprint/ie.css", :media => media="screen, projection" %><![endif]-->
   <%= stylesheet_link_tag    "admin/all", :media => "all" %>
-  <%= javascript_include_tag "admin/admin" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
   <%= yield :head%>
@@ -19,10 +19,10 @@
 			<li><%= link_to t(:imports), :admin_imports %></li>
 			<li><%= link_to t(:channels), :admin_channels %></li>
 			<li><%= link_to t(:clients), :admin_clients %></li>
+			<li><%= link_to t(:users), :admin_users %></li>
 			<li><%= link_to t(:products), :admin_products %></li>
 			<li><%= link_to t(:companies), :admin_companies %></li>
 			<li><%= link_to t(:agreements), :admin_agreements %></li>
-			<li><%= link_to t(:users), :admin_users %></li>
 			<li><%= link_to t(:emps), :admin_emps %></li>
 		</ul>
 		<div class='logout-box'>

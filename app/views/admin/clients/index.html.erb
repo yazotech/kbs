@@ -1,5 +1,11 @@
 <h2>客户列表</h2>
-
+<div class='toolbar'>
+  <ul class='actions'>
+    <li><%= link_to_with_icon 'add', '新建客户', new_admin_client_path, :remote => true %>
+</li>
+</ul>
+</div>
+<%= will_paginate(@collection) %>
 <table class='data-list'>
   <thead>
   <tr>
@@ -28,6 +34,5 @@
 <div class='dialog-window'></div>
 <br />
 
-<%= link_to '新建客户', new_admin_client_path, :remote => true %>
 
 

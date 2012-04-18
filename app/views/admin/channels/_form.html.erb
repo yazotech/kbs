@@ -1,38 +1,32 @@
 <%= form_for([:admin, @object], :remote => true) do |f| %>
-  <% if @object.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this channel from being saved:</h2>
+  <table>
+    <tr>
+      <td>渠道号</td>
+      <td><%= f.text_field :channel_number %></td>
+    </tr>
+    <tr>
+      <td>备注</td>
+      <td><%= f.text_field :remark %></td>
+    </tr>
+    <tr>
+      <td>有效状态</td>
+      <td>
+           <%= f.radio_button :status, '0' %>
+           <%= f.label 'status_0', '关闭' %>
+           <%= f.radio_button :status, '1' %>
+           <%= f.label 'status_1', '有效' %>
+      </td>
+    </tr>
+    <tr>
+      <td>所属客户</td>
+      <td><%= link_to @object.client.name, edit_admin_client_path(@object.client), :remote => true if @object.client %></td>
+    </tr>
+    <tr>
+      <td>产品名称</td>
+      <td><%= @object.product.title if @object.product %></td>
+    </tr>
+  </table>
 
-      <ul>
-      <% @object.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :channel_number %><br />
-    <%= f.text_field :channel_number %>
-  </div>
-  <div class="field">
-    <%= f.label :client_id %><br />
-    <%= f.number_field :client_id %>
-  </div>
-  <div class="field">
-    <%= f.label :product_id %><br />
-    <%= f.number_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :remark %><br />
-    <%= f.text_field :remark %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.number_field :status %>
-  </div>
-  
   <div class="actions">
     <%= f.submit %>
   </div>

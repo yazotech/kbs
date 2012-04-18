@@ -1,60 +1,61 @@
 <%= form_for([:admin, @object], :remote => true) do |f| %>
-  <% if @object.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@object.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
-      <% @object.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 <div class='container'>
   <div class='span-8'>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label '客户名称' %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :tel %><br />
+    <%= f.label '联系电话' %><br />
     <%= f.text_field :tel %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label '备注' %><br />
     <%= f.text_field :remark %>
   </div>
 
   <div class="field">
-    <%= f.label :balance %><br />
+    <%= f.label '账户余额' %>:
     <%= @object.balance %>
   </div>
   <div class="field">
-    <%= f.label :last_login %><br />
+    <%= f.label '上次登录' %>:
     <%= @object.last_login %>
   </div>
 
    <div class="field">
-    <%= f.label :balance_date %><br />
+    <%= f.label '结算日期' %>:
     <%= @object.balance_date %>
   </div>
    <div class="field">
-    <%= f.label :last_pay_date %><br />
+    <%= f.label '上次支付' %>:
     <%= @object.last_pay_date %>
   </div>
+<fieldset><legend>登录账户</legend>
+  <% @object.users.each do |u| %>
+  <%= link_to u.login_name, edit_admin_user_path(u), :remote => true %>
+  <% end %>
+</fieldset>
   </div>
 
   <div class='span-8 last'>
     <% if params[:id] %>
+	<fieldset><legend>已绑定渠道</legend>
     <% Channel.find_all_by_client_id(params[:id]).each do |ch|%>
-    <input type="checkbox" name="rm_channels[<%= ch.id %>]" id="ch_<%= ch.id %>" />
-    <label for="ch_<%=ch.id%>"><%= ch.channel_number %></label> &nbsp;
+    <div>
+    <input type="checkbox" name="rm_channels[<%= ch.id %>]" id="<%= dom_id ch %>" />
+    <label for="<%= dom_id ch %>"><%= ch.channel_number %></label>
+  </div>
     <% end %>
-    <hr />
+	</fieldset>
+	<fieldset><legend>空闲渠道</legend>
     <% Channel.where('client_id is null or client_id=0').each do |ch| %>
-    <input type="checkbox" name="add_channels[<%= ch.id %>]" /> <%= ch.channel_number %> &nbsp;
+    <div>
+    <input type="checkbox" name="add_channels[<%= ch.id %>]" id="<%= dom_id ch%>" />
+    <label for="<%= dom_id ch %>"><%= ch.channel_number %></label>
+    </div>
     <% end %>
+	</fieldset>
     <% end %>   
   </div>
 </div>

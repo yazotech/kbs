@@ -1,5 +1,12 @@
 <h2><%= t(:companies) %></h2>
 
+<div class='toolbar'>
+  <ul class='actions'>
+    <li><%= link_to_with_icon 'add', '新建公司', new_admin_company_path, :remote => true %>
+    </li>
+  </ul>
+</div>
+<%= will_paginate(@collection) %>
 <table class='data-list'>
   <thead>
   <tr>
@@ -21,6 +28,6 @@
 <div class='dialog-window'></div>
 <br />
 
-<%= link_to '新建公司', new_admin_company_path, :remote => true %>
+
 
 

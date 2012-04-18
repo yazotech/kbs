@@ -1,10 +1,11 @@
 <h2> 结算数据列表 </h2>
-<div class="search-box">
+<div class="toolbar">
   <%= form_for [:admin, @search] do |f| %>
   渠道号: <%= f.text_field :channel_number_contains %>
   <%= f.submit %>
   <% end %>
 </div>
+<%= will_paginate(@collection) %>
 <table class='data-list'>
   <thead>
   <tr>
@@ -22,9 +23,6 @@
     <th>备注</th>
     <th>状态</th>
     <th>更改时间</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
   </thead>
   <tbody>

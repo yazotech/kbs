@@ -1,10 +1,10 @@
-  <tr id='row_<%= obj.id %>'>
+  <tr id='<%= dom_id obj %>'>
     <td><%= obj.channel_number %></td>
     <td><%= obj.client.name if obj.client %></td>
     <td><%= obj.product.title if obj.product %></td>
     <td><%= obj.remark %></td>
     <td><%= obj.status %></td>
-    <td><%= obj.updated_at %></td>
+    <td><%= l obj.updated_at, :format => :long %></td>
     <td>
         <%= link_to t(:edit), edit_admin_channel_path(obj), :remote => true %> |
         <%= link_to t(:destroy), admin_channel_path(obj), :confirm => t(:are_u_sure), :method => :delete, :remote => true %></td>

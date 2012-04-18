@@ -1,4 +1,4 @@
 $('.dialog-window')
 	.html("<%= escape_javascript(render 'form') %>")
-	.dialog('option', 'title', 'Edit: <%= @object.class.name %> <%= @object.id %>#')
+	.dialog('option', 'title', '修改: <%= t(@object.class.name) %> <%= @object.id %>#')
 	.dialog('open');

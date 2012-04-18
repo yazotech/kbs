@@ -1,14 +1,21 @@
 <h2><%= t(:channels) %></h2>
-<div class="search-box">
+<div class="toolbar">
+  <ul class='actions'>
+    <li>
   <%= form_for [:admin, @search] do |f| %>
   渠道号: <%= f.text_field :channel_number_starts_with %>
   <%= f.submit %>
   <% end %>
+    </li>
+    <li>
+      <%= link_to_with_icon('add', '检查产品', 'checkpro') %>
+    </li>
+    <li>
+      <%= link_to_with_icon('add', 'NEW渠道', new_admin_channel_path, :remote => true) %>
+    </li>
+  </ul>
 </div>
- <a href="checkpro" class="button" style="float:right'">
-        <span><img alt="Add" src="/images/admin/icons/add.png">检查产品</span>
-      </a>
-<br>
+<%= will_paginate(@collection) %>
 <table class='data-list'>
   <thead>
   <tr>
@@ -31,7 +38,5 @@
 
 <div class='dialog-window'></div>
 <br />
-
-<%= link_to 'New Channel', new_admin_channel_path, :remote => true %>
 
 

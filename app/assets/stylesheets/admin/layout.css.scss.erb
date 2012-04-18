@@ -1,23 +1,31 @@
+@import 'def_colors';
+
+body{
+	background-image: url(<%= asset_path 'admin/background.png' %>);
+	padding:6px 20px 20px 20px;
+	font: .75em "HelveticaNeue", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
 #page_header{
-	background-color:#315ca1;
+	background-color: $bg3;
 	height:60px;
 	width: 90%;
 	margin:auto;
 }
 #page_footer{
-	background-color:#315ca1;
+	background-color: $bg2;
 	height:50px;
 	margin: auto;
 	width: 90%;
 }
 #page_body{
-	background-color:#FFFFFF;
+	background-color: $bg1;
 	margin: auto;
 	width: 90%;
 }
 .page_container {padding: 8px;}
 #htmlbody{
-background-color:#315ca1;	
+background-color: $bg1;	
 }
  .main_menu{
 	padding-left:100px; padding: 20px;
@@ -33,3 +41,6 @@ background-color:#315ca1;
 }
 
 .container {width:auto;}
+fieldset{
+	div{ white-space:nowrap;float:left;}
+}

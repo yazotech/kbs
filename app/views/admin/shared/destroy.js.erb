@@ -1,1 +1,1 @@
-$('#row_<%= @object.id %>').replaceWith('<%= escape_javascript(render :partial => 'row', :locals => {:obj => @object}) %>');
+$('#<%= dom_id @object %>').replaceWith('<%= escape_javascript(render :partial => 'row', :locals => {:obj => @object}) %>');

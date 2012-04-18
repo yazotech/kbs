@@ -1,6 +1,7 @@
+@import 'def_colors';
 .toolbar {
-	border:solid 1px #ccc; 
-	background-color:#E5ECF9;
+	border:solid 1px $bd1; 
+	background-color:$bg2;
 	margin-bottom: 4px;
 	line-height: 1;
 	height:36px;

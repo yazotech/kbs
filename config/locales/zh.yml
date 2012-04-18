@@ -19,6 +19,8 @@ zh:
   operates: "操作"
   are_u_sure: "你确认吗？"
   description: '说明'
+  remark: "备注"
+  channel: "渠道"
 
   admin:
     companies:

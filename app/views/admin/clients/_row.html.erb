@@ -1,13 +1,13 @@
-  <tr id='row_<%= obj.id %>'>
+  <tr id='<%= dom_id obj %>'>
   	<td><%= obj.id %></td>
     <td><%= obj.name %></td>
     <td><%= obj.tel %></td>
     <td><%= obj.remark %></td>
     <td><%= obj.balance %></td>
-    <td><%= obj.last_login %></td>
-    <td><%= obj.balance_date %></td>
-    <th><%= obj.last_pay_date %><td>
-    <td><%= obj.updated_at %></td>
+    <td><%= l obj.last_login, :format => :long if obj.last_login %></td>
+    <td><%= l obj.balance_date, :format => :short if obj.balance_date %></td>
+    <td><%= l obj.last_pay_date, :format => :short if obj.last_pay_date %><td>
+    <td><%= l obj.updated_at, :format => :long %></td>
     <td><%= link_to '编辑', edit_admin_client_path(obj), :remote => true %></td>
     <td><%= link_to '删除', admin_client_path(obj), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
   </tr>
