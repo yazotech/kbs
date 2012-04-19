@@ -32,8 +32,8 @@
     <%= @object.last_pay_date %>
   </div>
 <fieldset><legend>登录账户</legend>
-  <% @object.users.each do |u| %>
-  <%= link_to u.login_name, edit_admin_user_path(u), :remote => true %>
+  <% @object.user_infos.each do |ui| %>
+  <%= link_to ui.user.login_name, edit_admin_user_info_path(ui), :remote => true %>
   <% end %>
 </fieldset>
   </div>

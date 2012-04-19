@@ -17,7 +17,11 @@ class BalancesController < ApplicationController
 		@b = '{}'
 		if username  && password
 			u = User.find_by_login_name(username)
-			@b = u if u && u.valid_password?(password)
+			if u && u.valid_password?(password)
+				@b = {}
+				@b[:login_name] = u.login_name
+				@b[:client_id] = u.user_info.client_id if u.user_info
+			end
 		end
 		respond_with(@b)
 	end

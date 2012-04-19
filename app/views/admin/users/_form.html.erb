@@ -12,12 +12,10 @@
     <%= f.label '登录密码' %><br />
     <%= f.text_field :password %>
   </div>
-  <div class="field">
-    <%= f.label '所属客户' %> : <%= @object.client.name if @object.client %>
-  </div>
 
-<br />
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>  
 <% end %>

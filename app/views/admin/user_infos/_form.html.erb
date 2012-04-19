@@ -1,0 +1,34 @@
+<div class='container'>
+  <div class='span-8'>
+<%= form_for([:admin, @object], :remote => true) do |f| %>
+  <div class="field">
+    <%= f.label 'real name' %><br />
+    <%= f.text_field :real_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+   <div class="field">
+    <%= f.label 'website' %><br />
+    <%= f.text_field :website %>
+  </div>
+
+  <br />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+  </div>
+  <div class='span-8 last'>
+<% u = @object.user %>
+<fieldset>
+  <legend>login info</legend>
+  <p>login name: <%= u.login_name %></p>
+  <p>email: <%= u.email %></p>
+  <p>change password</p>
+<%= link_to 'user', edit_admin_user_path(@object.user), :remote => true %>
+
+</fieldset>
+  </div>
+</div>

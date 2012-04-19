@@ -1,0 +1,17 @@
+  <% u = obj.user %>
+  <tr id='<%= dom_id obj %>'>
+  	<td><%= obj.id %></td>
+    <td><%= u.login_name if u %></td>
+    <td><%= u.email if u %></td>
+    <td><%= obj.real_name %></td>
+    <td><%= obj.phone %></td>
+    <td><%= obj.website %></td>
+    <td><%= obj.client_id %></td>
+    <td><%= u.sign_in_count if u %></td>
+    <td><%= l u.current_sign_in_at, :format => :long if u && u.current_sign_in_at %></td>
+    <td><%= l u.last_sign_in_at, :format => :long if u && u.last_sign_in_at %></td>
+    <td><%= u.current_sign_in_ip if u %></td>
+    <td><%= u.last_sign_in_ip if u %></td>
+    <td><%= link_to '编辑', edit_admin_user_info_path(obj), :remote => true %> | 
+    <%= link_to '删除', admin_user_info_path(obj), :confirm => '确定删除？', :method => :delete, :remote => true %></td>
+  </tr>

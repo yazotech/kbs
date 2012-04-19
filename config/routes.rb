@@ -12,7 +12,7 @@ Kbs::Application.routes.draw do
 
   namespace :admin do
   	resources :companies, :clients, :agreements, :channels, :products, :balances, :imports
-    resources :users
+    resources :user_infos, :users
     resources :emps
     match 'seachuser' => 'users#seachuser'
     match 'checkpro' => 'channels#checkpro'
