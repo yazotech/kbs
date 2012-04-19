@@ -44,9 +44,9 @@ class BalancesController < ApplicationController
 
 	def month_list
 		@list = []
-		ml = ActiveRecord::Base.connection.execute("select distinct substr(balance_date,0,8) from balances where client_id=#{params[:client_id]}")
+		ml = ActiveRecord::Base.connection.execute("select  distinct substr(balance_date,1,7) from balances where client_id=#{params[:client_id]} order by balance_date")
 		ml.each do |m|
-			@list << m[0]
+			@list << [m[0],m[0]]
 		end
 		respond_with(@list)
 	end
