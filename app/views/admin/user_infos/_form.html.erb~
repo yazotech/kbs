@@ -27,7 +27,7 @@
   <p>登录名: <%= u.login_name %></p>
   <p>Email: <%= u.email %></p>
   <p>(修改用户登录密码)</p>
-<%= link_to '修改用户登录信息', edit_admin_user_path(@object.user), :remote => true %>
+<%= link_to 'user', edit_admin_user_path(@object.user), :remote => true %>
 
 </fieldset>
   </div>

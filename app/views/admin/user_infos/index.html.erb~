@@ -13,9 +13,9 @@
   <tr>
     <th>用户编号</th>
     <th>登录名称</th>
-    <th>真实姓名</th>
-    <th>联系电话</th>
-    <th>网站</th>
+    <th>real name</th>
+    <th>phone</th>
+    <th>website</th>
     <th>邮箱</th>
     <th>公司</th>
     <th>登录次数</th>

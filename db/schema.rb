@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411050313) do
+ActiveRecord::Schema.define(:version => 20120420053503) do
 
   create_table "agreements", :force => true do |t|
     t.integer  "company_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20120411050313) do
     t.integer  "publish_status"
     t.datetime "created_at",                                                    :null => false
     t.datetime "updated_at",                                                    :null => false
+    t.integer  "dz_count"
   end
 
   add_index "balances", ["agreement_id"], :name => "index_balances_on_agreement_id"

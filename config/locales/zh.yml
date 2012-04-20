@@ -21,6 +21,7 @@ zh:
   description: '说明'
   remark: "备注"
   channel: "渠道"
+  user_infos: "用户"
 
   admin:
     companies:

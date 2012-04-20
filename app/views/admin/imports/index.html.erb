@@ -34,6 +34,7 @@
 		<tr id="trhead">
 			<th>日期</th>
 			<th>ch</th>
+			<th>dz count</th>
 			<th>结算用户数</th>
 			<th>client</th>
 			<th>公司</th>
@@ -48,11 +49,12 @@
 	<tbody>
 	<% if @balances !=nil %>
 		<% @balances.each do |b| %>
-		<tr>
+		<tr id='<%= dom_id b %>'>
 			<td><%= b.balance_date %></td>
 			<td><%= b.channel_number %></td>
+			<td><%= b.dz_count %></td>
 			<td><%= b.count %></td>
-			<td><%= b.client_id %></td>
+			<td><%= b.client.name if b.client %></td>
 			<td><%= Company.find_by_id(b.company_id).title if b.company_id %></td>
 			<td><%= Product.find_by_id(b.product_id).title if b.product_id %></td>
 			<td><%= b.agreement_id %></td>

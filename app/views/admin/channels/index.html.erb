@@ -4,7 +4,7 @@
     <li>
   <%= form_for [:admin, @search] do |f| %>
   渠道号: <%= f.text_field :channel_number_starts_with %>
-  <%= f.submit %>
+  <%= f.submit '查找' %>
   <% end %>
     </li>
     <li>

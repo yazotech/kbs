@@ -1,7 +1,7 @@
 <h2> 结算数据列表 </h2>
 <div class="toolbar">
   <%= form_for [:admin, @search] do |f| %>
-  渠道号: <%= f.text_field :channel_number_starts_with %>
+  渠道号: <%= f.text_field :channel_number_contains %>
   <%= f.submit '查找' %>
   <% end %>
 </div>
@@ -11,7 +11,7 @@
   <tr>
     <th>数据结算日期</th>
     <th>渠道号</th>
-    <th>对帐数量</th>
+    <th></th>
     <th>数量</th>
     <th>产品</th>
     <th>客户</th>

@@ -1,6 +1,14 @@
-<h2>客户列表</h2>
+<h2>客户列表1111</h2>
 <div class='toolbar'>
   <ul class='actions'>
+    <li>
+
+  <%= form_for [:admin, @search] do |f| %>
+  name: <%= f.text_field :name_contains %>
+  <%= f.submit '查找' %>
+  <% end %>
+
+    </li>
     <li><%= link_to_with_icon 'add', '新建客户', new_admin_client_path, :remote => true %>
 </li>
 </ul>
