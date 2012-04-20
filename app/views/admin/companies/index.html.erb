@@ -2,6 +2,12 @@
 
 <div class='toolbar'>
   <ul class='actions'>
+    <li>
+      <%= form_for [:admin, @search] do |f| %>
+      登录名: <%= f.text_field :title_contains %>
+      <%= f.submit '查找' %>
+      <% end %>
+      </li>
     <li><%= link_to_with_icon 'add', '新建公司', new_admin_company_path, :remote => true %>
     </li>
   </ul>

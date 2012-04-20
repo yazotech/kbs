@@ -6,7 +6,6 @@
     <td><%= obj.status %></td>
     <td><%= obj.updated_at %></td>
     <td>
-    	<%= link_to 'refresh', admin_product_path(obj) + '?op=refresh', :remote => true %> |
     	<%= link_to '编辑', edit_admin_product_path(obj), :remote => true %> |
     	<%= link_to '删除', admin_product_path(obj), :confirm => '确定删除？', :method => :delete, :remote => true %></td>
   </tr>

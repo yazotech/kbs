@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(:version => 20120420053503) do
 
   create_table "user_infos", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "client_id"
     t.string   "real_name"
     t.string   "website"
     t.string   "phone"
@@ -140,11 +139,11 @@ ActiveRecord::Schema.define(:version => 20120420053503) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "user_infos", ["client_id"], :name => "index_user_infos_on_client_id"
   add_index "user_infos", ["user_id"], :name => "index_user_infos_on_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login_name"
+    t.integer  "client_id"
     t.string   "email"
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
