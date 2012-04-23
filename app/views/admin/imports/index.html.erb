@@ -51,8 +51,7 @@
 		<span class="ui-icon ui-icon-circle-check" style="float:left;margin:0 7px 50px 0;"></span>
 		请把excel表格数据拷贝粘贴到下面文本框中。
 	</p>
-	<%= form_tag 'imports/do_import', :method => :get do %>
-	<%= hidden_field_tag :op, 'import' %>
+	<%= form_tag 'imports' do %>
 	<p>
 		<%= text_area_tag 'import_text', nil, :cols => 60 %>
   </p>

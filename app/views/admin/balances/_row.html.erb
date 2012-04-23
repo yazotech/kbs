@@ -3,10 +3,10 @@
     <td><%= balance.channel_number %></td>
     <td><%= balance.dz_count %></td>
     <td><%= balance.count %></td>
-    <td><%= balance.product_id %></td>
-    <td><%= balance.client_id %></td>
-    <td><%= balance.company_id %></td>
-    <td><%= balance.agreement_id %></td>
+    <td><%= balance.product.title if balance.product %></td>
+    <td><%= balance.client.name if balance.client %></td>
+    <td><%= balance.company.title if balance.company %></td>
+    <td><%= 'No.' + balance.agreement_id.to_s if balance.agreement_id %></td>
     <td><%= balance.price %></td>
     <td><%= balance.amount %></td>
     <td><%= balance.product_price %></td>

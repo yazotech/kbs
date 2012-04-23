@@ -19,7 +19,7 @@ module Admin
               b.product_price = pd.price
               b.product_amount = pd.price * b.dz_count
               b.status = 1
-              if b.count > 0
+              if b.count && b.count > 0
                 agr = Agreement.where(['client_id=? and product_id=? and agreement_start<=? and agreement_end>=?', ch.client_id, ch.product_id, b.balance_date, b.balance_date]).first
                 if agr
                   b.company_id = agr.company_id
@@ -36,20 +36,23 @@ module Admin
           b.save
         end
       end
-      redirect_to :action => :index, :controller => :imports
+      flash[:notice] = '已检查并填写客户、产品和价格等字段，请检查。'
+      redirect_to :action => :index
     end
 
     def save_data
       Balance.new_input.where(:status => 1).update_all(:status => 10)
+      flash[:notice] = '数据保存成功。'
       redirect_to :action => :index
     end
 
     def clear_data
-      Balance.where('status=0').delete_all
+      Balance.new_input.delete_all
+      flash[:notice] = '数据已清空，请重新导入。'
       redirect_to :action => :index
     end
 
-    def import_data
+    def create
       data = params[:import_text]
       lines = data.split(/\n/)
       lines.each do |line|
@@ -65,6 +68,8 @@ module Admin
           b.save!
         end
       end
+      flash[:notice] = "导入数据#{lines.count}行。" if lines
+      redirect_to :action => :index
     end
 
   end
