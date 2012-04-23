@@ -1,6 +1,13 @@
 <h2>协议列表</h2>
 <div class='toolbar'>
   <ul class='actions'>
+    <li>
+      <%= form_for [:admin, @search] do |f| %>
+      登录名: <%= f.text_field :company_title_contains %>
+      <%= f.submit '查找' %>
+      <% end %>
+      </li>
+
     <li><%= link_to_with_icon 'add', '新建协议', new_admin_agreement_path, :remote => true %>
     </li>
   </ul>
@@ -9,7 +16,7 @@
 <table class='data-list'>
   <thead>
   <tr>
-    <th>公司编号</th>
+    <th>公司</th>
     <th>客户</th>
     <th>产品</th>
     <th>协议开始时间</th>
