@@ -133,7 +133,6 @@ module Admin
       end
 
       def collection_url(options = {})
-        #debugger
         if parent_data.present?
           polymorphic_url([:admin, parent, model_class])
         else

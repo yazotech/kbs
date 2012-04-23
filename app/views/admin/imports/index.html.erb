@@ -1,70 +1,48 @@
 <div class='toolbar'>
-	
   <ul class='actions'>
     <li>
       <a href="#" class="button" onclick="$('#dialog').dialog('open');">
 	      <span><img alt="Add" src="/images/admin/icons/add.png">导入数据</span>
 	  </a>
     </li>
-     <li>
-      <a href="checkdate" class="button" >
-	      <span><img alt="Add" src="/images/admin/icons/add.png">检查数据</span>
-	  	</a>
+    <li>
+      <%= link_to_with_icon :add, '检查数据', 'imports/check_data' %>
     </li>
     <li>
-      <a href="save" class="button" >
-	      <span><img alt="Add" src="/images/admin/icons/add.png">发布数据</span>
-	  	</a>
+      <%= link_to_with_icon :add, '发布数据', 'imports/save_data' %>
     </li>
     <li>
-      <a href="clear" class="button">
-      	<span><img alt="Add" src="/images/admin/icons/add.png">清空</span>
-      </a>
+      <%= link_to_with_icon :add, '清空', 'imports/clear_data' %>
     </li>
   </ul>
- 
-  <br class='clear' />
-   <br/>
 </div>
 
 <div id="import_data">
 
 <table id="table" spadding="0">
 	<thead>
-		<tr id="trhead">
-			<th>日期</th>
-			<th>ch</th>
-			<th>dz count</th>
-			<th>结算用户数</th>
-			<th>client</th>
-			<th>公司</th>
-			<th>产品</th>
-			<th>agreement</th>
-			<th>单价</th>
-			<th>总价格</th>
-			<th>备注</th>
-			<th>status</th>
-		</tr>
+	<tr id="trhead">
+    <th>结算日期</th>
+    <th>渠道号</th>
+    <th>对帐数量</th>
+    <th>数量</th>
+    <th>产品</th>
+    <th>客户</th>
+    <th>公司</th>
+    <th>协议</th>
+    <th>单价</th>
+    <th>总价</th>
+    <th>产品价</th>
+    <th>收入</th>
+    <th>备注</th>
+    <th>状态</th>
+    <th>更改时间</th>
+	</tr>
 	</thead>
 	<tbody>
-	<% if @balances !=nil %>
-		<% @balances.each do |b| %>
-		<tr id='<%= dom_id b %>'>
-			<td><%= b.balance_date %></td>
-			<td><%= b.channel_number %></td>
-			<td><%= b.dz_count %></td>
-			<td><%= b.count %></td>
-			<td><%= b.client.name if b.client %></td>
-			<td><%= Company.find_by_id(b.company_id).title if b.company_id %></td>
-			<td><%= Product.find_by_id(b.product_id).title if b.product_id %></td>
-			<td><%= b.agreement_id %></td>
-			<td><%= b.price %></td>
-			<td><%= b.amount %></td>
-			<td><%= b.remark %></td>
-			<td><%= b.status %></td>
-		</tr>
-		<% end %>
-		<% end %>
+	<% @balances.each do |b| %>
+   <%= render :partial =>'admin/balances/row', :locals => {:balance => b} %>
+	<% end %>
 	</tbody>
 </table>
 </div>
