@@ -6,7 +6,6 @@
     <td><%= obj.real_name %></td>
     <td><%= obj.phone %></td>
     <td><%= obj.website %></td>
-    <td><%= u.client_id %></td>
     <td><%= u.sign_in_count if u %></td>
     <td><%= l u.current_sign_in_at, :format => :long if u && u.current_sign_in_at %></td>
     <td><%= l u.last_sign_in_at, :format => :long if u && u.last_sign_in_at %></td>
