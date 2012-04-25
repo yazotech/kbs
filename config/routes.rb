@@ -19,15 +19,11 @@ Kbs::Application.routes.draw do
         get :check_data, :save_data, :clear_data, :import_data
       end
     end
-    match 'seachuser' => 'users#seachuser'
     match 'checkpro' => 'channels#checkpro'
-<<<<<<< HEAD
     match 'clear' => 'imports#clear'
     match 'save' => 'imports#save'
     match 'checkdate' => 'imports#checkdate'
     match 'sjflot' => 'imports#sjfloat'
-=======
->>>>>>> 92123b891f27d338863838ae26ba189e61dabd3b
   end
   match '/admin', :to => 'admin/home#index', :as => :admin
 

@@ -40,7 +40,6 @@ module Admin
       redirect_to :action => :index
     end
 
-<<<<<<< HEAD
 
  def sjfloat
        @date = Balance.find_by_sql('select sum(count) as count, balance_date from balances group by balance_date')
@@ -57,13 +56,13 @@ def clear
   Balance.where('status=0').delete_all
   redirect_to :action => :index, :controller => :imports
 end
-=======
+
     def save_data
       Balance.new_input.where(:status => 1).update_all(:status => 10)
       flash[:notice] = '数据保存成功。'
       redirect_to :action => :index
     end
->>>>>>> 92123b891f27d338863838ae26ba189e61dabd3b
+
 
     def clear_data
       Balance.new_input.delete_all
