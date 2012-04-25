@@ -25,8 +25,8 @@ module Admin
       render 'admin/shared/update'
     end
     def create
-      invoke_callbacks(:create, :before)
       @object = object_name.classify.constantize.new(params[object_name.parameterize('_')])
+      invoke_callbacks(:create, :before)
       if @object.save
         invoke_callbacks(:create, :after)
       end
