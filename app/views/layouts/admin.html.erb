@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>admin-</title>
+ 
   <%= stylesheet_link_tag "blueprint/screen.css", :media => 'screen, projection' %>
   <%= stylesheet_link_tag "blueprint/print.css", :media => 'print' %>
 <!--[if lt IE 8]><%= stylesheet_link_tag "blueprint/ie.css", :media => media="screen, projection" %><![endif]-->
@@ -10,6 +11,8 @@
   <%= csrf_meta_tags %>
 
   <%= yield :head%>
+  
+  
 </head>
 <body id='htmlbody'>
 	<div id='page_header'>
@@ -24,6 +27,7 @@
 			<li><%= link_to t(:companies), :admin_companies %></li>
 			<li><%= link_to t(:agreements), :admin_agreements %></li>
 			<li><%= link_to t(:emps), :admin_emps %></li>
+			<li><%= link_to t(:数据统计), :admin_sjflot %></li>
 		</ul>
 		<div class='logout-box'>
 <% if emp_signed_in? %>

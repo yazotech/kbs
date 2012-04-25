@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require admin/dialog
+//= require admin/dtflot
+//= require admin/jquery.flot
 

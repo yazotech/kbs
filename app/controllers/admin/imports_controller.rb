@@ -28,6 +28,13 @@ module Admin
     redirect_to :action => :index, :controller => :imports
   end
 
+
+ def sjfloat
+       @date = Balance.find_by_sql('select sum(count) as count, balance_date from balances group by balance_date')
+       render 'sjflot.html.erb'
+ end
+
+
   def save
     Balance.new_input.where('company_id is not null and company_id > 0 and status=1').update_all(:status => 10)
     redirect_to :action => :index

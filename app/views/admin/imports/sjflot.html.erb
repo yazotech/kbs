@@ -1,0 +1,12 @@
+<div id="placeholder" style="width:700px;height:350px;margin:auto;margin-top:80px;">
+</div>
+
+<% 
+d1 = []
+@date.each do |d| 
+   d1 << "[#{d.balance_date.to_time.to_i * 1000 }, #{d.count}]" 
+end 
+%>
+<script type='text/javascript'>
+var d1 = [<%= d1.join(',') %>];
+</script>

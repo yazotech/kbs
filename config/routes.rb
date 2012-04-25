@@ -19,6 +19,7 @@ Kbs::Application.routes.draw do
     match 'clear' => 'imports#clear'
     match 'save' => 'imports#save'
     match 'checkdate' => 'imports#checkdate'
+    match 'sjflot' => 'imports#sjfloat'
   end
   match '/admin', :to => 'admin/home#index', :as => :admin
 
