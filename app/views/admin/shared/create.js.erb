@@ -1,2 +1,6 @@
+<% if flash[:error] %>
+alert("ERROR: " + '<%= flash[:error] %>');
+<% else %>
 $('.dialog-window').dialog('close');
 $('.data-list').append('<%= escape_javascript(render :partial => 'row', :locals => {:obj => @object}) %>');
+<% end %>

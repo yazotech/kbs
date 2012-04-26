@@ -29,6 +29,8 @@ module Admin
       invoke_callbacks(:create, :before)
       if @object.save
         invoke_callbacks(:create, :after)
+      else
+        flash[:error] = @object.errors.full_messages.to_sentence
       end
       render 'admin/shared/create'
     end
