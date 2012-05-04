@@ -2,7 +2,7 @@ class BalancesController < ApplicationController
 	respond_to :html, :xml, :json
 
 	def index
-		@b = Balance.limit(10)
+		@b = Balance.order('balance_date desc').limit(10)
 		respond_with(@b)
 	end
 	def show
