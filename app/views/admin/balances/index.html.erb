@@ -2,7 +2,9 @@
 <div class="toolbar">
   <%= form_for [:admin, @search] do |f| %>
   渠道号: <%= f.text_field :channel_number_starts_with %>
-  
+   
+  Date: <%= f.text_field :balance_date_equals, :class => 'datepicker', :size => 8 %>
+
     <%= f.submit 'Search' %>
   <% end %>
 </div>

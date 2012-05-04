@@ -79,7 +79,7 @@ end
           b = Balance.new
           b.balance_date = cs[0]
           b.channel_number = cs[1]
-          b.count = cs[2]
+          
           b.dz_count = cs[3] if cs.length>3
           b.status = 0
           b.dz_count = b.count if !b.dz_count || b.dz_count<1
