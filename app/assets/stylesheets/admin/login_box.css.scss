@@ -1,3 +1,4 @@
+@import 'def_colors';
 
 #login-box {
 	margin: auto;
@@ -61,10 +62,8 @@
 }
 
 .logout-box{
-	position:absolute;
-	top: 22px;
-	right: 200px;
-	color: white;
-	font-weight: bold;
-	a, a:visited {color:white;}
+	text-align:right;
+	width: 90%;
+	margin:auto;
+	margin-bottom:2px;
 }
