@@ -30,7 +30,7 @@ class BalancesController < ApplicationController
 		month = params[:month]
 		client_id = params[:client_id]
 		if month
-			@b = Balance.where(:client_id => client_id).where(["balance_date like ?", month + '%'])
+			@b = Balance.where(:client_id => client_id).where('count is not null and count>0').where(["balance_date like ?", month + '%'])
 		else
 			@b = []
 		end

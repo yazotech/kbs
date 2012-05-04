@@ -5,6 +5,9 @@
  *
 s
  *= require jqueryui/ui
- *= require_self
- *= require_tree .
+ *= require admin/layout
+ *= require admin/login_box
+ *= require admin/pagination
+ *= require admin/toolbox
+ *= require admin/datatable
 */
