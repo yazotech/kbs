@@ -1,0 +1,38 @@
+<h2>Data Tools</h2>
+
+<p>
+<%= link_to "Update balances's Product_id", 'data_tools/balances_product_id' %>
+
+</p>
+
+<% if @balances_by_month %>
+<table>
+	<tr><td></td></tr>
+	<tr><td></td></tr>
+	<tr><td></td></tr>
+
+	<%= @balances_by_month.each do |b| %>
+	<td></td>
+	<% end %>
+</table>
+
+<table class='data-list'>
+  <thead>
+  <tr>
+    <th>日期</th>
+    <th>产品名称</th>
+    <th>结算数量</th>
+  </tr>
+</thead>
+<tbody>
+  <% @balances_by_month.each do |b| %>
+   <tr>
+    <td><%= b.ba_date %></td>
+    <td><%= b.pro %></td>
+    <td><%= b.count %></td>
+  </tr>
+
+  <% end %>
+</tbody>
+</table>
+<% end %>

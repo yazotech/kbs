@@ -1,0 +1,62 @@
+<h2>Reports</h2>
+<div>
+<div style="width:35%;float:left;">
+<table class='data-list' style='width:auto;'>
+  <thead>
+    <tr>
+      <th>结算月份</th>
+      <th>产品</th>
+      <th>结算数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product_by_month.each do |b| %>
+    <tr>
+      <td><%= b['ba_date'] %></td>
+      <td><%= Product.find(b['pro']).title if b['pro'] %></td>
+      <td><%= b['count'] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div style="width:40%;float:left;">
+		<table class='data-list' style='width:auto;align:center'>
+	  <thead>
+	    <tr>
+	      <th>结算月份</th>
+	      <th>客户</th>
+	      <th>结算数量</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @client_by_month.each do |b| %>
+	    <tr>
+	      <td><%= b['ba_date'] %></td>
+	      <td><%= Client.find(b['cli']).name if b['cli'] %></td>
+	      <td><%= b['count'] %></td>
+	    </tr>
+	    <% end %>
+	  </tbody>
+</table>
+</div>
+
+<div style="width:25%;float:right;">
+		<table class='data-list' style='width:auto;'>
+	  <thead>
+	    <tr>
+	      <th>结算月份</th>
+	      <th>结算数量</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @sum_by_month.each do |b| %>
+	    <tr>
+	      <td><%= b['ba_date'] %></td>
+	      <td><%= b['count'] %></td>
+	    </tr>
+	    <% end %>
+	  </tbody>
+</table>
+</div>
