@@ -3,9 +3,8 @@ module Admin
   class ResourceController < AdminController
     def index
       return @collection if @collection.present?
-       load_collection
-     invoke_callbacks(:index, :after)
-     
+      load_collection
+      invoke_callbacks(:index, :after)
     end
     def show
        load_object
@@ -53,7 +52,7 @@ module Admin
       def load_collection
         params[:search] ||= {}
         @search = object_name.classify.constantize.metasearch(params[:search])
-        @collection = @search.page(params[:page]).per_page(AppConfig[:admin_list_per_page])
+        @collection = @search.page(params[:page]).per_page(20)
       end 
       def load_object
         @object = object_name.classify.constantize.find(params[:id])

@@ -1,9 +1,7 @@
 module Admin
   class BalancesController < ResourceController
-  	protected
-
-  	index.after :balance_by_date
-    show.after :balance_by_date
+  	#index.after :balance_by_date
+    #show.after :balance_by_date
 
   	def balance_by_date
       @list = []
@@ -17,7 +15,7 @@ module Admin
       def load_collection
         params[:search] ||= {}
         @search = Balance.history.metasearch(params[:search])
-        @collection = @search.page(params[:page]).per_page(AppConfig[:admin_list_per_page])
+        @collection = @search.page(params[:page]).per_page(20)
       end
 
 
