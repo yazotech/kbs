@@ -21,6 +21,7 @@ class BalancesController < ApplicationController
 				@b = {}
 				@b[:login_name] = u.login_name
 				@b[:client_id] = u.user_info.client_id if u.user_info
+				@b[:client_name] = u.client.name if u.client
 			end
 		end
 		respond_with(@b)

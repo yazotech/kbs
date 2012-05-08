@@ -21,7 +21,12 @@
 <% end %>
   </div>
   <div class='span-8 last'>
-<% u = @object.user %>
+<%
+unless @object.user
+  @object.build_user
+  @object.save
+end
+u = @object.user %>
 <fieldset>
   <legend>用户登录信息</legend>
   <p>登录名: <%= u.login_name %></p>

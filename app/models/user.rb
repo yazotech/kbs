@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_one :user_info
-  belongs_to :client
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>admin-</title>
+  <title>KBS管理后台</title>
  
   <%= stylesheet_link_tag "blueprint/screen.css", :media => 'screen, projection' %>
   <%= stylesheet_link_tag "blueprint/print.css", :media => 'print' %>
@@ -35,9 +35,9 @@
 			<li><%= link_to t(:companies), :admin_companies %></li>
 			<li><%= link_to t(:agreements), :admin_agreements %></li>
 			<li><%= link_to t(:emps), :admin_emps %></li>
-			<li><%= link_to t(:数据统计), :admin_sjflot %></li>
-			<li><%= link_to 'data tools', '/admin/data_tools' %></li>
-			<li><%= link_to 'reports', '/admin/reports' %></li>
+			<li><%= link_to '维护工具', '/admin/data_tools' %></li>
+			<li><%= link_to '图表', '/admin/diagrams/amounts' %></li>
+			<li><%= link_to '报表', '/admin/reports' %></li>
 		</ul>
 
 	</div>
