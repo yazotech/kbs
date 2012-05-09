@@ -1,23 +1,5 @@
 module Admin
   class BalancesController < ResourceController
-  	#index.after :balance_by_date
-    #show.after :balance_by_date
-
-  	def balance_by_date
-      @list = []
-          ml = ActiveRecord::Base.connection.execute("select  distinct substr(balance_date,1,7) from balances order by balance_date")
-          ml.each do |m|
-            @list << [m[0],m[0]]
-          end
-  		@object = Balance.order('balance_date desc')
-  	end
-
-      def load_collection
-        params[:search] ||= {}
-        @search = Balance.history.metasearch(params[:search])
-        @collection = @search.page(params[:page]).per_page(20)
-      end
-
 
       def month_seach
         month = params[:month]
