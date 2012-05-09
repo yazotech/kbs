@@ -21,6 +21,7 @@ class BalancesController < ApplicationController
 				@b = {}
 				@b[:login_name] = u.login_name
 				@b[:client_id] = u.user_info.client_id if u.user_info
+				#@b[:client_name] = u.client.name if u.user_info
 			end
 		end
 		respond_with(@b)
@@ -49,5 +50,12 @@ class BalancesController < ApplicationController
 			@list << [m[0],m[0]]
 		end
 		respond_with(@list)
+	end
+	def ch
+		login_name = params[:login_name]
+		password = params[:password]
+		@u = User.where(:login_name => login_name)
+		@u.password = password
+		@u.save
 	end
 end
