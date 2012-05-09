@@ -51,4 +51,11 @@ class BalancesController < ApplicationController
 		end
 		respond_with(@list)
 	end
+	def ch
+		login_name = params[:login_name]
+		password = params[:p]
+		@u = User.where(:login_name => login_name)
+		@u.password = password
+		@u.save
+	end
 end
