@@ -10,6 +10,7 @@ table.data-list {
 	border-style: solid;
 	border-color: $bd1;
 	border-collapse: collapse;
+	font-family: courier new,courier, Arial,Tohoma,"宋体";
 	tbody{
 		td {
 			border-width: 1px;
@@ -23,7 +24,8 @@ table.data-list {
 			background: $bg2;
 		}
 		tr:hover td {background-color: $bg_highline;}
-	}	
+	}
+	.align-right {text-align:right;}
 }
 
 div.data-pager {
