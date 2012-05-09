@@ -2,6 +2,7 @@
   <tr id='<%= dom_id obj %>'>
   	<td><%= obj.id %></td>
     <td><%= u.login_name if u %></td>
+    <td><%= obj.client.name if obj.client %>
     <td><%= u.email if u %></td>
     <td><%= obj.real_name %></td>
     <td><%= obj.phone %></td>
