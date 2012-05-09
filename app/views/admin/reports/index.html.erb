@@ -34,7 +34,9 @@
 	    <% @client_by_month.each do |b| %>
 	    <tr>
 	      <td><%= b['ba_date'] %></td>
-	      <td><%= Client.find(b['cli']).name if b['cli'] %></td>
+		      <td>
+		      <%= Client.find(b['cli']).name if b['cli'] && Client.exists?(b['cli']) %>
+		      </td>
 	      <td><%= b['count'] %></td>
 	    </tr>
 	    <% end %>

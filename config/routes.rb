@@ -1,8 +1,6 @@
 Kbs::Application.routes.draw do
   devise_for :emps
 
-  devise_for :users
-
   root :to => 'home#index'
   resources :balances do
     collection do
@@ -11,7 +9,12 @@ Kbs::Application.routes.draw do
   end
 
   namespace :admin do
-  	resources :companies, :clients, :agreements, :channels, :products, :balances
+  	resources :companies, :agreements, :channels, :products, :balances
+    resources :clients do
+      member do
+        get :add_user
+      end
+    end
     resources :user_infos, :users
     resources :emps
     resources :imports do
@@ -20,12 +23,12 @@ Kbs::Application.routes.draw do
       end
     end
     match 'checkpro' => 'channels#checkpro'
-    match 'clear' => 'imports#clear'
-    match 'save' => 'imports#save'
-    match 'checkdate' => 'imports#checkdate'
+
     match 'sjflot' => 'imports#sjfloat'
+
     match 'data_tools(/:action)' => 'data_tools'
     match 'reports(/:action)' => 'reports'
+    match 'diagrams(/:action)' => 'diagrams'
   end
   match '/admin', :to => 'admin/home#index', :as => :admin
 

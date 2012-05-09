@@ -49,7 +49,7 @@ module Admin
       def load_collection
         params[:search] ||= {}
         @search = object_name.classify.constantize.metasearch(params[:search])
-        @collection = @search.page(params[:page]).per_page(AppConfig[:admin_list_per_page])
+        @collection = @search.page(params[:page]).per_page(20)
       end 
       def load_object
         @object = object_name.classify.constantize.find(params[:id])

@@ -1,9 +1,12 @@
-<h2>Data Tools</h2>
+<h2>数据维护工具</h2>
 
-<p>
-<%= link_to "Update balances's Product_id", 'data_tools/balances_product_id' %>
+<ul>
+	<li><%= link_to "填补旧数据中的product_id", 'data_tools/balances_product_id' %></li>
+	<li><%= link_to "填补旧数据中的对账数量", 'data_tools/balances_dz_count' %></li>
+  <li><%= link_to "填补旧数据中的对账总价", 'data_tools/balances_product_price' %></li>
 
-</p>
+  
+</ul>
 
 <% if @balances_by_month %>
 <table>

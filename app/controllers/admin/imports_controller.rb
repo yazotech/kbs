@@ -13,19 +13,23 @@ module Admin
           b.price = b.amount = b.product_price = b.product_amount = 0
           b.status = 0
 
-          if b.channel_id && b.channel_id > 0 && b.product_id && b.product_id > 0 && b.client_id && b.client_id > 0
+          if b.channel_id && b.channel_id > 0 && b.product_id && b.product_id > 0
             if b.dz_count > 0
               pd = Product.find(b.product_id)
               b.product_price = pd.price
               b.product_amount = pd.price * b.dz_count
               b.status = 1
-              if b.count && b.count > 0
-                agr = Agreement.where(['client_id=? and product_id=? and agreement_start<=? and agreement_end>=?', ch.client_id, ch.product_id, b.balance_date, b.balance_date]).first
-                if agr
-                  b.company_id = agr.company_id
-                  b.agreement_id = agr.id
-                  b.price = agr.price
-                  b.amount = b.count * b.price
+              if b.count && b.count > 0 
+                if b.client_id && b.client_id > 0
+                  agr = Agreement.where(['client_id=? and product_id=? and agreement_start<=? and agreement_end>=?', ch.client_id, ch.product_id, b.balance_date, b.balance_date]).first
+                  if agr
+                    b.company_id = agr.company_id
+                    b.agreement_id = agr.id
+                    b.price = agr.price
+                    b.amount = b.count * b.price
+                  else
+                    b.status = 0
+                  end
                 else
                   b.status = 0
                 end
@@ -41,21 +45,15 @@ module Admin
     end
 
 
- def sjfloat
-       @date = Balance.find_by_sql('select sum(count) as count, balance_date from balances group by balance_date')
-       render 'sjflot.html.erb'
- end
-
-
   def save
     Balance.new_input.where('company_id is not null and company_id > 0 and status=1').update_all(:status => 10)
     redirect_to :action => :index
   end
 
-def clear
-  Balance.where('status=0').delete_all
-  redirect_to :action => :index, :controller => :imports
-end
+  def clear
+    Balance.where('status=0').delete_all
+    redirect_to :action => :index, :controller => :imports
+  end
 
     def save_data
       Balance.new_input.where(:status => 1).update_all(:status => 10)
@@ -79,10 +77,10 @@ end
           b = Balance.new
           b.balance_date = cs[0]
           b.channel_number = cs[1]
-          
+          b.count = cs[2]
           b.dz_count = cs[3] if cs.length>3
-          b.status = 0
           b.dz_count = b.count if !b.dz_count || b.dz_count<1
+          b.status = 0
           b.save!
         end
       end

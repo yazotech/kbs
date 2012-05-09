@@ -1,0 +1,36 @@
+<div id="total_amounts_diagram" style="width:700px;height:350px;margin:auto;margin-top:80px;">
+</div>
+
+<div id="product_amounts_diagram" style="width:700px;height:350px;margin:auto;margin-top:10px;">
+</div>
+
+<div id='pie_diagram' style='width:400px;height:300px;border: 1px dashed gainsboro;margin:auto;margin-top:10px;'></div>
+
+<% content_for :head do %>
+
+<%= javascript_include_tag "jquery.flot/jquery.flot", "jquery.flot/jquery.flot.pie" %>
+<script type='text/javascript'>
+var total_amounts = <%= raw @total_amounts.to_json %>;
+var product_amounts = <%= raw @product_amounts.to_json %>;
+var pie_data = <%= raw @pie %>;
+
+$(function(){
+	$.plot($("#total_amounts_diagram"), [total_amounts], {xaxis: {mode: "time", timeformat: "%y-%m"}});
+
+	$.plot($("#product_amounts_diagram"), product_amounts, {xaxis: {mode: "time", timeformat: "%y-%m"}});
+
+$.plot($("#pie_diagram"), pie_data, 
+{
+        series: {
+            pie: { 
+                show: true
+            }
+        },
+        legend: {
+            show: false
+        }
+});
+
+});
+</script>
+<% end %>
