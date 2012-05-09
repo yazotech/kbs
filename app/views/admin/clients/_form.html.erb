@@ -32,11 +32,11 @@
     <%= @object.last_pay_date %>
   </div>
 </fieldset>
-  <%= link_to '{新增登录}', admin_client_path(@object)+ '/add_user' if @object.id  %>
+  <%= link_to '{新增登录}', admin_client_path(@object)+ '/add_user', :remote => true if @object.id  %>
 
 <fieldset><legend>登录账户</legend>
   <% @object.user_infos.each do |ui| %>
-  <%= link_to ui.user.login_name, edit_admin_user_info_path(ui), :remote => true  if ui.user %>
+  <%= link_to "#{ui.id}:#{ui.user.login_name if ui.user}", edit_admin_user_info_path(ui), :remote => true %>
   <% end %>
 </fieldset>
   </div>

@@ -20,9 +20,15 @@ class BalancesController < ApplicationController
 			if u && u.valid_password?(password)
 				@b = {}
 				@b[:login_name] = u.login_name
-				@b[:client_id] = u.user_info.client_id if u.user_info
-				cli_id = u.user_info.id if u.user_info.client_id
-				@b[:client_name] = Client.find(cli_id).name
+				ui = u.user_info
+				if ui
+					@b[:client_id] = ui.client_id
+					if ui.client
+						@b[:client_name] = ui.client.name 
+					else
+						@b[:client_name] = "{未知用户}"
+					end
+				end
 			end
 		end
 		respond_with(@b)

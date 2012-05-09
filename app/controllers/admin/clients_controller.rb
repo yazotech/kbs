@@ -5,12 +5,11 @@ module Admin
 
 
   	def add_user
-  		load_object
   		ui = UserInfo.new
   		ui.build_user
-  		@object.user_infos << ui
+      ui.user.login_name = 'A' + params[:id]
+      ui.client_id = params[:id].to_i
       ui.save
-  		render :text => 'ok'
   	end
   	
   	def update_channels
