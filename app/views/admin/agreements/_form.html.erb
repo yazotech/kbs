@@ -1,16 +1,16 @@
 <%= form_for([:admin, @object], :remote => true) do |f| %>
 <div class="field">
     <%= f.label '协议公司' %><br />
-    <%= f.number_field :company_id %>
+    <%= f.select(:company_id, @company) %>
   </div>
 
 <div class="field">
     <%= f.label '协议客户' %><br />
-    <%= f.number_field :client_id %>
+    <%= f.select(:client_id, @client) %>
   </div>
   <div class="field">
     <%= f.label '产品' %><br />
-    <%= f.number_field :product_id %>
+    <%= f.select(:product_id, @product) %>
   </div>
  <div class="field">
     <%= f.label '合约开始日期' %><br />

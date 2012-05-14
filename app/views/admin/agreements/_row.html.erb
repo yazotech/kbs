@@ -1,7 +1,7 @@
   <tr id='row_<%= obj.id %>'>
     <td><%= obj.company.title if obj.company %></td>
     <td><%= obj.client.name if obj.client %></td>
-    <td><%= obj.product_id %></td>
+    <td><%= obj.product.title if obj.product %></td>
     <td><%= obj.agreement_start %></td>
     <td><%= obj.agreement_end %></td>
     <td><%= obj.agreement_sign %></td>
