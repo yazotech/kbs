@@ -44,6 +44,16 @@ class BalancesController < ApplicationController
 		end
 		respond_with(@b)
 	end
+	def serforch
+        channel = params[:channel]
+        client_id = params[:client_id]
+        if channel
+        	@b = Balance.where(:client_id => client_id).where('count is not null and count>0').where(["channel_number like ?", channel + '%'])
+        else
+        	@b = []
+        end
+        respond_with(@b)
+	end
 
 	def s
 		client_id = params[:client_id]

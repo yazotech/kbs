@@ -4,7 +4,7 @@ Kbs::Application.routes.draw do
   root :to => 'home#index'
   resources :balances do
     collection do
-      get :login, :q, :month_list, :ch
+      get :login, :q, :month_list, :ch, :serforch
     end
   end
 
