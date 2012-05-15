@@ -1,5 +1,7 @@
   <tr id='<%= dom_id obj %>'>
-    <td><%= obj.title %></td>
+    <td> 
+        <%= link_to obj.title,  admin_channels_path + "?search[channel_number_starts_with]=#{obj.channel_number}" %> 
+    </td>
     <td><%= obj.description %></td>
     <td><%= obj.channel_number %></td>
     <td><%= obj.price %></td>
