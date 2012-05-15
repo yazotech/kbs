@@ -34,7 +34,9 @@
 	    <% @client_by_month.each do |b| %>
 	    <tr>
 	      <td><%= b['ba_date'] %></td>
-	      <td><%= Client.find(b['cli']).name if b['cli'] && Client.exists?(b['cli']) %></td>
+		      <td>
+		      <%= Client.find(b['cli']).name if b['cli'] && Client.exists?(b['cli']) %>
+		      </td>
 	      <td><%= b['count'] %></td>
 	    </tr>
 	    <% end %>
@@ -43,20 +45,5 @@
 </div>
 
 <div style="width:25%;float:right;">
-		<table class='data-list' style='width:auto;'>
-	  <thead>
-	    <tr>
-	      <th>结算月份</th>
-	      <th>结算数量</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <% @sum_by_month.each do |b| %>
-	    <tr>
-	      <td><%= b['ba_date'] %></td>
-	      <td><%= b['count'] %></td>
-	    </tr>
-	    <% end %>
-	  </tbody>
-</table>
+
 </div>

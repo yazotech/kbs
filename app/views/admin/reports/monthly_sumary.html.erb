@@ -1,0 +1,18 @@
+<table class='data-list' style='width:auto;'>
+	  <thead>
+	    <tr>
+	      <th>结算月份</th>
+	      <th width="80">结算数量</th>
+	      <th width="80">结算数量</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @sum_by_month.each do |b| %>
+	    <tr>
+	      <td><%= b['b_date'] %></td>
+	      <td class='align-right'><%= number_with_delimiter b['count'] %></td>
+	      <td class='align-right'><%= number_with_precision(b['product_amount'], :precision => 2, :separator => '.', :delimiter => ',')  %></td>
+	    </tr>
+	    <% end %>
+	  </tbody>
+</table>
