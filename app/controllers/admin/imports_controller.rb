@@ -56,7 +56,7 @@ module Admin
   end
 
     def save_data
-      Balance.new_input.where(:status => 1).update_all(:status => 10)
+      Balance.new_input.where(:status => 0).update_all(:status => 10)
       flash[:notice] = '数据保存成功。'
       redirect_to :action => :index
     end
