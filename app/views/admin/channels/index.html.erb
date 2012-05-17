@@ -1,3 +1,14 @@
+<% content_for :breadcrumbs do %>
+  <ul>
+    <li><a href="/admin">Home</a></li>
+    <li>&raquo;</li>
+    <li>数据维护</li>
+    <li>&raquo;</li>
+    <li><%= link_to '产品渠道', admin_products_path %></li>
+    <li>&raquo;</li>
+    <li>渠道列表</li>
+  </ul>
+<% end %>
 <h2><%= t(:channels) %></h2>
 <div class="toolbar">
   <ul class='actions'>

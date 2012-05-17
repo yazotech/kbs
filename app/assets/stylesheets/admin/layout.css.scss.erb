@@ -5,12 +5,24 @@ body{
 	padding:6px 20px 20px 20px;
 	font: .75em "HelveticaNeue", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
-
+.menu {display: none;}
+a[rel='text'] {color:white;text-decoration:none;}
 #page_header{
-	background-color: $bg3;
-	height:60px;
+	background-color: $bg1;
+	height:39px;
 	width: 90%;
 	margin:auto;
+	border-bottom: solid 4px $bg3;
+}
+#page_breadcrumbs { 
+	height: 20px;
+	background-color: $bg2;
+	ul {
+		margin: 0;
+		padding: 3px 0 2px 4px;
+		list-style: none;
+		li{float: left;margin-right: 4px;}
+	}
 }
 #page_footer{
 	background-color: $bg2;
