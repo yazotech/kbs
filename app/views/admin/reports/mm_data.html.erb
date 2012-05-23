@@ -1,0 +1,53 @@
+<h2>雅卓MM业务数据（未扣除坏账)报表</h2>
+
+ <%= form_tag do |f| %> 
+  日期: <%= text_field_tag 'date', :balance_date_equals, :class => 'datepicker', :size => 8 %>
+  <%= submit_tag 'Search' %>
+  <% end %>
+
+<div style="width:85%;float:left;">
+<table class='data-list' style='width:90%;'>
+  <thead>
+    <tr>
+      <th>日期</th>
+      <th>产品(渠道号)</th>
+      <th>价格</th>
+      <th>实际数量</th>
+      <th>应收金额（元）</th>
+      <th>上传数量</th>
+      <th>支付金额（元）</th>
+    </tr>
+  </thead>
+  <% @sumdz_count = 0 %>
+  <% @sumdz_amount = 0 %>
+  <% @sumcount = 0 %>
+  <% @sumamount = 0 %>
+  <tbody>
+    <% @mm_data.each do |b| %>
+    <tr>
+      <td><%= b['balance_date'] %></td>
+      <td><%= Product.find(b['pro']).title if b['pro'] %>(<%= Product.find(b['pro']).channel_number if b['pro'] %>)</td>  
+      <td><%= b['price'] %></td>
+      <td><%= b['dz_count'] %></td>
+      <td><%= b['price']*0.7*b['dz_count'] if ['dz_count'] %></td>
+      <td><%= b['count']  %></td>
+      <td><%= b['price']*0.7*0.7*b['count'] if b['count'] %></td>
+    <% @sumdz_count = @sumdz_count + b['dz_count'] if b['dz_count'] %>
+    <% @sumdz_amount = @sumdz_amount + b['price']*0.7*b['dz_count'] if ['dz_count'] %>
+    <% @sumcount = @sumcount + b['count'] if b['count'] %>
+    <% @sumamount = @sumamount + b['price']*0.7*0.7*b['count'] if b['count'] %>
+    </tr>
+    <% end %>
+
+	  <tr style ="color:red;">
+	      <td colspan=3> 合计</td>
+	     <td><%= @sumdz_count %></td>
+        <td><%= @sumdz_amount %></td>
+	     <td><%= @sumcount %></td>
+	      <td><%= @sumamount %></td>
+	    </tr>
+      
+  </tbody>
+</table>
+</div>
+

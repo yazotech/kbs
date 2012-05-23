@@ -20,7 +20,8 @@
 		<img src="/assets/jquery.mb.menu/images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
 		<br/>业务数据报表，包括：产品、子渠道、客户、登录账户、结算数据等。<br/><br/>
 	</a>
-	<%= link_to '报表', '/admin/reports', :class => "{img: 'newspapers-blue.png'}" %>
+
+	<a class="{menu: 'sub_menu_baobiao', img: 'box-closed-blue.png'}">报表</a>
 	<%= link_to '图表', '/admin/diagrams/amounts', :class => "{img: 'barchart-blue.png'}" %>
 </div>
 <div id="menu_system" class="menu">
@@ -42,6 +43,16 @@
 <div id="sub_menu_clients" class="menu">
 	<%= link_to t(:clients), :admin_clients, :class => "{img: 'user-blue.png'}" %>
 	<%= link_to t(:user_infos), :admin_user_infos, :class => "{img: 'user-grey.png'}" %>
+</div>
+
+<div id="sub_menu_baobiao" class="menu">
+<%= link_to '月份和客户统计', '/admin/reports', :class => "{img: 'newspapers-blue.png'}" %>
+<%= link_to '雅卓科技WAP推广阅读', '/admin/wap_read', :class => "{img: 'newspapers-blue.png'}" %>
+<%= link_to '雅卓MM业务未扣除坏账）', '/admin/mm_data', :class => "{img: 'newspapers-blue.png'}" %>
+<%= link_to '雅卓彩信业务', '/admin/yz_caixin', :class => "{img: 'newspapers-blue.png'}" %>
+<%= link_to '卓晔彩信业务', '/admin/zy_caixin', :class => "{img: 'newspapers-blue.png'}" %>
+
+
 </div>
 <!-- end menues -->
 </div>
