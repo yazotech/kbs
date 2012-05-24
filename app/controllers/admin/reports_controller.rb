@@ -87,11 +87,24 @@ module Admin
              @zy_caixin = Balance.find_by_sql(sql)
 		 end
        def data_Contrast
-			
-			@read_data_Contrast = Balance.find_by_sql('select substr(balance_date,1,10) as ba_date ,
+			if params[:date]
+		 		if params[:date1]
+			      sql = %Q[
+			      	select substr(balance_date,1,10) as ba_date ,
 				company_id as com, product_id as pro,price,
 				sum(count) as count,amount 
-				from balances group by ba_date,pro')
+				from balances where company_id=1 and channel_number like '031%' and (balance_date between '#{params[:date]}' and '#{params[:date1]}') group by ba_date,pro
+			]
+		          end
+	          else
+	          	sql = %Q[
+	          		select substr(balance_date,1,10) as ba_date ,
+				company_id as com, product_id as pro,price,
+				sum(count) as count,amount 
+				from balances where company_id=1 and channel_number like '031%' group by ba_date,pro
+			]
+	          end
+               @read_data_Contrast = Balance.find_by_sql(sql)
 		end
 	end
 end

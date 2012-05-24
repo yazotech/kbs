@@ -52,6 +52,5 @@ order by product_id
 			@pie = "[" + s.join(', ') + "]" 
 
 		end
-		
 	end
 end

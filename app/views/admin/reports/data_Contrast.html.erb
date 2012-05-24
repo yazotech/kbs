@@ -1,10 +1,11 @@
 <h2>阅读周数据对照表</h2>
-<div class="toolbar">
-  <%= form_tag '/admin/reports/data_Contrast', :remote => true do %>
-   日期: <%= text_field_tag :balance_date_equals, :class => 'datepicker', :size => 8 %>
+
+ <%= form_tag do |f| %> 
+  日期: <%= text_field_tag 'date', :balance_date_equals, :class => 'datepicker', :size => 8 %>到
+   <%= text_field_tag 'date1', :balance_date_equals, :class => 'datepicker', :size => 8 %>
   <%= submit_tag 'Search' %>
   <% end %>
-</div>
+
 <div style="width:40%;float:left;">
 		<table class='data-list' style='width:auto;align:center'>
 	  <thead>
