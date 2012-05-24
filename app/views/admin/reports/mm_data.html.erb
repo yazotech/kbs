@@ -1,7 +1,8 @@
 <h2>雅卓MM业务数据（未扣除坏账)报表</h2>
 
  <%= form_tag do |f| %> 
-  日期: <%= text_field_tag 'date', :balance_date_equals, :class => 'datepicker', :size => 8 %>
+  日期: <%= text_field_tag 'date', :balance_date_equals, :class => 'datepicker', :size => 8 %>到
+   <%= text_field_tag 'date1', :balance_date_equals, :class => 'datepicker', :size => 8 %>
   <%= submit_tag 'Search' %>
   <% end %>
 
