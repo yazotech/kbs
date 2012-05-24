@@ -10,4 +10,6 @@ s
  *= require admin/pagination
  *= require admin/toolbox
  *= require admin/datatable
+
+ *= require jquery.mb.menu/css/menu
 */

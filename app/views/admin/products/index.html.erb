@@ -1,3 +1,15 @@
+<% content_for :breadcrumbs do %>
+  <ul>
+    <li><a href="/admin">Home</a></li>
+    <li>&raquo;</li>
+    <li>数据维护</li>
+    <li>&raquo;</li>
+    <li>产品渠道</li>
+    <li>&raquo;</li>
+    <li>产品列表</li>
+  </ul>
+<% end %>
+
 <h2>产品列表</h2>
 <div class='toolbar'>
   <ul class='actions'>
@@ -16,14 +28,12 @@
 <table class='data-list'>
   <thead>
   <tr>
+    <th>渠道号</th>
     <th>产品名称</th>
     <th>描述</th>
-    <th>渠道号</th>
     <th>产品价</th>
     <th>状态</th>
     <th>更改时间</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 </thead>

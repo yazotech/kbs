@@ -1,16 +1,28 @@
 <%= form_for([:admin, @object], :remote => true) do |f| %>
 <div class="field">
     <%= f.label '协议公司' %><br />
+<<<<<<< HEAD
     <%= select_tag('agreement[company_id]', options_from_collection_for_select(@c, 'id', 'title',@object.company_id))%>
+=======
+    <%= f.select(:company_id, options_from_collection_for_select(@c, 'id', 'title', @object.company_id))%>
+>>>>>>> 20cf69839f005516e32cf40d6bc79eacd1a31a05
   </div>
 
 <div class="field">
     <%= f.label '协议客户' %><br />
+<<<<<<< HEAD
     <%= select_tag('agreement[client_id]', options_from_collection_for_select(@c1, 'id', 'name',@object.client_id))%>
   </div>
   <div class="field">
     <%= f.label '产品' %><br />
      <%= select_tag('agreement[product_id]', options_from_collection_for_select(@c2, 'id', 'title',@object.product_id))%>
+=======
+    <%= f.select(:client_id, options_from_collection_for_select(@c1, 'id', 'name',@object.client_id))%>
+  </div>
+  <div class="field">
+    <%= f.label '产品' %><br />
+     <%= f.select(:product_id, options_from_collection_for_select(@c2, 'id', 'title',@object.product_id))%>
+>>>>>>> 20cf69839f005516e32cf40d6bc79eacd1a31a05
   </div>
  <div class="field">
     <%= f.label '合约开始日期' %><br />

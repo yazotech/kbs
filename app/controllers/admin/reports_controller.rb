@@ -16,5 +16,12 @@ group by b_date
 ]
 			@sum_by_month = Balance.find_by_sql(sql)
 		end
+		def data_Contrast
+			
+			@read_data_Contrast = Balance.find_by_sql('select substr(balance_date,1,10) as ba_date ,
+				company_id as com, product_id as pro,price,
+				sum(count) as count,amount 
+				from balances group by ba_date,pro')
+		end
 	end
 end

@@ -7,7 +7,7 @@
   <%= stylesheet_link_tag "blueprint/print.css", :media => 'print' %>
 <!--[if lt IE 8]><%= stylesheet_link_tag "blueprint/ie.css", :media => media="screen, projection" %><![endif]-->
   <%= stylesheet_link_tag    "admin/all", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "admin/all" %>
   <%= csrf_meta_tags %>
 
   <%= yield :head%>
@@ -24,24 +24,12 @@
 <% end %>		
 	</div>
 	<div id='page_header'>
-		<ul id='page_nav'  class="main_menu">
-			<li><%= link_to t(:home), '/admin' %></li>
-			<li><%= link_to t(:balances), :admin_balances %></li>
-			<li><%= link_to t(:imports), :admin_imports %></li>
-			<li><%= link_to t(:channels), :admin_channels %></li>
-			<li><%= link_to t(:clients), :admin_clients %></li>
-			<li><%= link_to t(:user_infos), :admin_user_infos %></li>
-			<li><%= link_to t(:products), :admin_products %></li>
-			<li><%= link_to t(:companies), :admin_companies %></li>
-			<li><%= link_to t(:agreements), :admin_agreements %></li>
-			<li><%= link_to t(:emps), :admin_emps %></li>
-			<li><%= link_to '维护工具', '/admin/data_tools' %></li>
-			<li><%= link_to '图表', '/admin/diagrams/amounts' %></li>
-			<li><%= link_to '报表', '/admin/reports' %></li>
-		</ul>
-
+		<%= render :partial => 'admin/shared/main_menu' %>
 	</div>
 	<div id='page_body'>
+    <div id='page_breadcrumbs'>
+      <%= yield :breadcrumbs %>
+    </div>
 		<div class='page_container'>
     <% if flash[:error] %>
       <div class="flash error"><%= flash[:error] %></div>

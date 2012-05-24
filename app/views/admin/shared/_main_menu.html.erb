@@ -1,0 +1,56 @@
+
+<div id='main_menu'>
+		<table class="rootVoices" cellspacing='0' cellpadding='0' border='0' style='width:auto;'><tr>
+			<td class="rootVoice {menu: 'menu_data'}" >数据维护</td>
+			<td class="rootVoice {menu: 'menu_report'}" >报表分析</td>
+			<td class="rootVoice {menu: 'menu_system'}" >系统管理</td>
+			<td class="rootVoice {menu: 'empty'}" onclick="window.open('http://bk-b.info','ww');">客户终端</td>
+		</tr></table>		
+
+<!-- menues -->
+<div id="menu_data" class="menu">
+	<a rel="title" class="{img: 'tag-red.png'}" >数据录入和查询</a>
+	<a class="{menu: 'sub_menu_balances', img: 'currency-yen.png'}">结算数据</a>
+	<a class="{menu: 'sub_menu_products', img: 'box-closed-blue.png'}">产品渠道</a>
+	<%= link_to t(:agreements), :admin_agreements, :class => "{img: 'file-text.png'}" %>
+	<a class="{menu: 'sub_menu_clients', img: 'box-closed-blue.png'}">客户管理</a>
+</div>
+<div id="menu_report" class="menu">
+	<a rel="text" >
+		<img src="/assets/jquery.mb.menu/images/browser.png" alt="img" style="position:absolute;margin-top:-20px; margin-left:-25px;margin-bottom:10px"/><br/>
+		<br/>业务数据报表，包括：产品、子渠道、客户、登录账户、结算数据等。<br/><br/>
+	</a>
+	<a class="{menu: 'sub_menu_reports', img: 'newspapers-blue.png'}">报表</a>
+	<%= link_to '图表', '/admin/diagrams/amounts', :class => "{img: 'barchart-blue.png'}" %>
+</div>
+<div id="menu_system" class="menu">
+	<%= link_to t(:emps), :admin_emps, :class => "{img: 'user-red.png'}" %>
+	<%= link_to t(:companies), :admin_companies, :class => "{img: 'money.png'}" %>
+	<%= link_to '维护工具', '/admin/data_tools', :class => "{img: 'box-opened-brown.png'}" %>
+</div>
+
+
+<div id="sub_menu_balances" class="menu">
+	<%= link_to '查询', :admin_balances, :class => "{img: 'search-blue.png'}" %>	
+	<a rel="separator"> </a>
+	<%= link_to '录入', :admin_imports, :class => "{img: 'tag-blue.png'}" %>
+</div>
+<div id="sub_menu_products" class="menu">
+	<%= link_to t(:products), :admin_products, :class => "{img: 'box-closed-grey.png'}" %>
+	<%= link_to t(:channels), :admin_channels, :class => "{img: 'share-blue.png'}" %>
+</div>
+<div id="sub_menu_clients" class="menu">
+	<%= link_to t(:clients), :admin_clients, :class => "{img: 'user-blue.png'}" %>
+	<%= link_to t(:user_infos), :admin_user_infos, :class => "{img: 'user-grey.png'}" %>
+</div>
+<div id="sub_menu_reports" class="menu">
+	<%= link_to '报表1', '/admin/reports', :class => "{img: 'newspapers-blue.png'}" %>
+	<a class="{menu: 'sub_menu_read_reports', img: 'newspapers-blue.png'}">阅读周数据</a>
+</div>
+<div id="sub_menu_read_reports" class="menu">	
+	<%= link_to '报表', '/admin/reports/data_Contrast', :class => "{img: 'newspapers-blue.png'}" %>
+	<%= link_to '图表', '', :class => "{img: 'newspapers-blue.png'}" %>
+</div>
+<!-- end menues -->
+</div>
+

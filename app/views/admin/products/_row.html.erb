@@ -1,12 +1,10 @@
   <tr id='<%= dom_id obj %>'>
-    <td> 
-        <%= link_to obj.title,  admin_channels_path + "?search[channel_number_starts_with]=#{obj.channel_number}" %> 
-    </td>
+    <td><%= link_to obj.channel_number, admin_channels_path + "?search[channel_number_starts_with]=#{obj.channel_number}" %></td>
+    <td><%= obj.title %> (<%= obj.channels.count %>)</td>
     <td><%= obj.description %></td>
-    <td><%= obj.channel_number %></td>
     <td><%= obj.price %></td>
     <td><%= obj.status %></td>
-    <td><%= obj.updated_at %></td>
+    <td><%= l obj.updated_at, :format => :long %></td>
     <td>
     	<%= link_to '编辑', edit_admin_product_path(obj), :remote => true %> |
     	<%= link_to '删除', admin_product_path(obj), :confirm => '确定删除？', :method => :delete, :remote => true %></td>

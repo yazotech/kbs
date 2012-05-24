@@ -1,3 +1,16 @@
+<% content_for :head do %>
+<%= javascript_include_tag "jquery.visualize/js/visualize.jQuery" %>
+<%= stylesheet_link_tag "jquery.visualize/css/visualize",
+				"jquery.visualize/css/visualize-dark", :media => 'screen, projection' %>
+<script type='text/javascript'>
+$(function(){
+ $('table.data-list').visualize({type: 'pie', height: '300px', width: '420px'});
+	$('table.data-list').visualize({type: 'bar', width: '420px'});
+	$('table.data-list').visualize({type: 'area', width: '420px'});
+	$('table.data-list').visualize({type: 'line', width: '420px'});
+});
+</script>
+<% end %>
 <table class='data-list' style='width:auto;'>
 	  <thead>
 	    <tr>
