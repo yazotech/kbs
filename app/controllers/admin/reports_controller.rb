@@ -18,9 +18,13 @@ module Admin
 
 		def wap_read
 			if params[:date]
+				if params[:date1]
 				sql = %Q[
-				select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,amount from balances where company_id=1 and channel_number like '031%' and balance_date like '%#{params[:date]}%' group by balance_date,pro
+				select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,
+				amount from balances where company_id=1 and channel_number like '031%'
+				 and (balance_date between '#{params[:date]}' and '#{params[:date1]}') group by balance_date,pro
 			]
+			      end
              else
 			sql = %Q[
 					select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,amount from balances where company_id=1 and channel_number like '031%' group by balance_date,pro
@@ -31,9 +35,12 @@ module Admin
 
 		 def mm_data
 		 	if params[:date]
+		 		if params[:date1]
 				sql = %Q[
-				select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,dz_count,amount from balances where company_id=1 and channel_number like '140%' and balance_date like '%#{params[:date]}%' group by balance_date,pro
+				select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,dz_count,
+				amount from balances where company_id=1 and channel_number like '140%' and (balance_date between '#{params[:date]}' and '#{params[:date1]}') group by balance_date,pro
 			]
+			      end
              else
 			sql = %Q[
 					select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,dz_count,amount from balances where company_id=1 and channel_number like '140%' group by balance_date,pro
@@ -44,11 +51,13 @@ module Admin
 
 		 def yz_caixin
 		 	if params[:date]
+		 		if params[:date1]
 				sql = %Q[
 				select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,dz_count,
 				amount,product_amount from balances where company_id=1 and
-				 channel_number like '0_01%' and balance_date like '%#{params[:date]}%' group by balance_date,pro
+				 channel_number like '0_01%' and (balance_date between '#{params[:date]}' and '#{params[:date1]}') group by balance_date,pro
 			]
+			     end
              else
 			sql = %Q[
 					select substr(balance_date,1,10) as balance_date,
@@ -61,11 +70,13 @@ module Admin
 
 		  def zy_caixin
 		 	if params[:date]
+		 		if params[:date1]
 				sql = %Q[
 				select substr(balance_date,1,10) as balance_date,product_id as pro,price,count,dz_count,
 				amount,product_amount from balances where company_id=2 and
-				 channel_number like '0_01%' and balance_date like '%#{params[:date]}%' group by balance_date,pro
+				 channel_number like '0_01%' and (balance_date between '#{params[:date]}' and '#{params[:date1]}') group by balance_date,pro
 			]
+			     end
              else
 			sql = %Q[
 					select substr(balance_date,1,10) as balance_date,
