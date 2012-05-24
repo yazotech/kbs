@@ -15,6 +15,15 @@ module Admin
 				]
 			@sum_by_month = Balance.find_by_sql(sql)
 		end
+<<<<<<< HEAD
+		def data_Contrast
+			
+			@read_data_Contrast = Balance.find_by_sql('select substr(balance_date,1,10) as ba_date ,
+				company_id as com, product_id as pro,price,
+				sum(count) as count,amount 
+				from balances group by ba_date,pro')
+		end
+=======
 
 		def wap_read
 			if params[:date]
@@ -75,12 +84,7 @@ module Admin
 			end
              @zy_caixin = Balance.find_by_sql(sql)
 		 end
-       def data_Contrast
-			
-			@read_data_Contrast = Balance.find_by_sql('select substr(balance_date,1,10) as ba_date ,
-				company_id as com, product_id as pro,price,
-				sum(count) as count,amount 
-				from balances group by ba_date,pro')
-		end
+
+>>>>>>> b5933b94220aa6e2ff40b60601acc7a44c4b6433
 	end
 end

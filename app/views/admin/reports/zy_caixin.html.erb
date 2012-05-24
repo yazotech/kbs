@@ -1,0 +1,51 @@
+<h2>卓晔彩信业务数据报表</h2>
+
+ <%= form_tag do |f| %> 
+  日期: <%= text_field_tag 'date', :balance_date_equals, :class => 'datepicker', :size => 8 %>
+  <%= submit_tag 'Search' %>
+  <% end %>
+
+<div style="width:85%;float:left;">
+<table class='data-list' style='width:90%;'>
+  <thead>
+    <tr>
+      <th>日期</th>
+      <th>产品名称</th>
+      <th>渠道号</th>
+      <th>单价（元）</th>
+      <th>移动数量</th>
+      <th>上传数量</th>
+      <th>支付金额（元）</th>
+    </tr>
+  </thead>
+  <% @sumcount = 0 %>
+   <% @sumdz_count = 0 %>
+   <% @sumamount = 0 %>
+  <tbody>
+    <% @zy_caixin.each do |b| %>
+    <tr>
+      <td><%= b['balance_date'] %></td>
+      <td><%= Product.find(b['pro']).title if b['pro'] %></td>
+      <td><%= Product.find(b['pro']).channel_number if b['pro'] %></td>
+      <td><%= b['price'] %></td>
+      <td><%= b['count'] %></td>
+      <td><%= b['dz_count'] %></td>
+      <td><%= b['amount'] %></td>
+      <% @sumcount = @sumcount + b['count'] if b['count'] %>
+      <% @sumdz_count = @sumdz_count + b['dz_count'] if b['dz_count'] %>
+      <% @sumamount = @sumamount + b['amount'] if b['amount'] %>
+    </tr>
+    <% end %>
+
+    <tr style ="color:red;">
+        <td colspan=4> 合计</td>
+       
+       <td><%= @sumcount %></td>
+       <td><%= @sumdz_count %></td>
+      <td><%= @sumamount %></td>
+      </tr>
+      
+  </tbody>
+</table>
+</div>
+
