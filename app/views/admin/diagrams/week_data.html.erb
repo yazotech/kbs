@@ -1,0 +1,15 @@
+<div id="read_amounts_diagram" style="width:700px;height:350px;margin:auto;margin-top:10px;">
+</div>
+
+<% content_for :head do %>
+
+<%= javascript_include_tag "jquery.flot/jquery.flot", "jquery.flot/jquery.flot.pie" %>
+<script type='text/javascript'>
+var read_amounts = <%= raw @read_amounts.to_json %>;
+
+$(function(){
+
+	$.plot($("#read_amounts_diagram"), read_amounts, {xaxis: {mode: "time", timeformat: "%y-%m-%d"}});
+});
+</script>
+<% end %>

@@ -52,5 +52,30 @@ order by product_id
 			@pie = "[" + s.join(', ') + "]" 
 
 		end
+		def week_data
+			sql = %Q[
+            select substr(balance_date,1,10) as balance_date,
+				product_id, 
+				sum(product_amount) as amount 
+				from balances 
+				where product_id is not null and
+				 company_id=1 and channel_number like '031%' 
+				group by balance_date,product_id 
+				order by product_id, balance_date
+]
+			r = ActiveRecord::Base.connection.execute(sql)
+			prod = -1
+			@read_amounts = []
+			dt = []
+			r.each do |d|
+				if d[1] != prod
+					@read_amounts << dt if dt.count > 0
+					dt = []
+					prod = d[1]
+				end
+   			dt << [d[0].to_time.to_i * 1000, d[2]] 
+			end 
+			@read_amounts << dt if dt.count > 0
+		end
 	end
 end
