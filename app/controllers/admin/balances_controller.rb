@@ -1,5 +1,12 @@
 module Admin
   class BalancesController < ResourceController
+
+      def load_collection
+        params[:search] ||= {}
+        @search = Balance.history.metasearch(params[:search])
+        @collection = @search.page(params[:page]).per_page(20)
+      end 
+
       def month_seach
         month = params[:month]
         if month

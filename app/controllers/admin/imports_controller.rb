@@ -20,7 +20,7 @@ module Admin
               b.product_amount = pd.price * b.dz_count
               b.status = 1
               if b.count && b.count > 0 
-                if b.client_id && b.client_id > 0
+                if b.client_id && b.client_id > 0 && b.count <= b.dz_count
                   agr = Agreement.where(['client_id=? and product_id=? and agreement_start<=? and agreement_end>=?', ch.client_id, ch.product_id, b.balance_date, b.balance_date]).first
                   if agr
                     b.company_id = agr.company_id
@@ -44,19 +44,8 @@ module Admin
       redirect_to :action => :index
     end
 
-
-  def save
-    Balance.new_input.where('company_id is not null and company_id > 0 and status=1').update_all(:status => 10)
-    redirect_to :action => :index
-  end
-
-  def clear
-    Balance.where('status=0').delete_all
-    redirect_to :action => :index, :controller => :imports
-  end
-
     def save_data
-      Balance.new_input.where(:status => 0).update_all(:status => 10)
+      Balance.new_input.where(:status => 1).update_all(:status => 10)
       flash[:notice] = '数据保存成功。'
       redirect_to :action => :index
     end
@@ -71,6 +60,7 @@ module Admin
     def create
       data = params[:import_text]
       lines = data.split(/\n/)
+      imp_lines = 0
       lines.each do |line|
         cs = line.split(/[\t\s]/)
         if cs.length>2
@@ -82,9 +72,10 @@ module Admin
           b.dz_count = b.count if !b.dz_count || b.dz_count<1
           b.status = 0
           b.save!
+          imp_lines += 1
         end
       end
-      flash[:notice] = "导入数据#{lines.count}行。" if lines
+      flash[:notice] = "导入数据 #{imp_lines}/#{lines.count}行。" if lines
       redirect_to :action => :index
     end
 
