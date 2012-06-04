@@ -17,5 +17,20 @@ module Admin
         render 'index.html.erb'
       end
 
+  def balabyclient
+    
+    if params[:date]
+            if params[:date1]
+        sql = %Q[
+        select * from balances where client_id='#{params[:id]}' and balance_date between '#{params[:date]}' and '#{params[:date1]}' order by balance_date desc]
+            end
+             else
+      sql = %Q[
+          select * from balances where client_id='#{params[:id]}' order by balance_date desc]       
+      end
+             @collection = Balance.find_by_sql(sql)
+        render 'balabyclient.html.erb'
+    end
+    
   end
 end

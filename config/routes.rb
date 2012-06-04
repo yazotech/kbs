@@ -31,6 +31,7 @@ Kbs::Application.routes.draw do
     match 'diagrams(/:action)' => 'diagrams'
     match 'yz_caixin' => 'reports#yz_caixin'
     match 'zy_caixin' => 'reports#zy_caixin'
+    match 'balabyclient/:id' => 'balances#balabyclient'
   end
   match '/admin', :to => 'admin/home#index', :as => :admin
 

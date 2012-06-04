@@ -1,0 +1,64 @@
+<h2> 结算数据列表 </h2>
+<div class="toolbar">
+   <%= form_tag do |f| %> 
+  日期: <%= text_field_tag 'date', :balance_date_equals, :class => 'datepicker', :size => 8 %>到
+   <%= text_field_tag 'date1', :balance_date_equals, :class => 'datepicker', :size => 8 %>
+  <%= submit_tag 'Search' %>
+  <% end %>
+
+</div>
+
+<table class='data-list'>
+  <thead>
+  <tr>
+    <th>结算日期</th>
+    <th>渠道号</th>
+    <th>对帐数量</th>
+    <th>数量</th>
+    <th>产品</th>
+    <th>客户</th>
+    <th>公司</th>
+    <th>协议</th>
+    <th>单价</th>
+    <th>总价</th>
+    <th>产品价</th>
+    <th>收入</th>
+    <th>备注</th>
+    <th>状态</th>
+    <th>更改时间</th>
+  </tr>
+  </thead>
+  <tbody>
+
+    <% dz_count=0 %>
+    <% count=0 %>
+    <% sum_price=0 %>
+    <% shouru=0 %>
+
+  <% @collection.each do |balance| %>
+   <%= render :partial =>'row', :locals => {:balance => balance} %>
+   <% dz_count=dz_count+balance.dz_count if balance.dz_count %>
+   <% count=count+balance.count if balance.count %>
+   <% sum_price=sum_price+balance.amount if balance.amount %>
+   <% shouru=shouru+balance.product_amount if balance.product_amount %>
+  <% end %>
+
+  <tr style="color:red;">
+    <td colspan='2'>合计</td>
+    <td><%= dz_count %></td>
+    <td><%= count %></td>
+    <td colspan='5' ></td>
+    <td><%= sum_price %></td>
+    <td></td>
+    <td><%= shouru %></td>
+    <td colspan='3'></td>
+ </tr>
+
+  </tbody>
+</table>
+
+
+<div class='dialog-window'></div>
+<br />
+
+
